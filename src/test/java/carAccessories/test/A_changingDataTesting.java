@@ -32,8 +32,7 @@ public class A_changingDataTesting {
 	  flagA=a.changeData(email, name, phone, address);
 	  flagC=c.changeMyData(email, name, phone, address);
 	  System.out.printf("Name="+c.Name+" Phone="+c.Phone+" Address="+c.Address+"\n");
-
-	  
+ 
 	}
 
 	@Then("Successfully Conn Changed")
