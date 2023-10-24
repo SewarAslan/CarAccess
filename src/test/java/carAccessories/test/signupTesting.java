@@ -19,7 +19,7 @@ public class signupTesting {
 	@When("set Email {string} and Password {string}")
 	public void set_email_and_password(String email, String password) {
 		Checker.testAdd();
-    if(email.contains("@")&&email.contains(".com")&&!email.isBlank()&&!password.isBlank()&&!Checker.checkUser(email, password)) {
+    if(Checker.validEmail(email)&&!password.isBlank()&&!Checker.checkUser(email, password)) {
     	sf=true;
     }
     else sf=false;
