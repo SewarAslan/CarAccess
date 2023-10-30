@@ -4,8 +4,9 @@ import carAccessories.first.Checker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import static org.junit.Assert.*;
+import io.cucumber.junit.CucumberOptions;
 
+import static org.junit.Assert.*;
 
 
 public class ProductTesting {
@@ -41,6 +42,6 @@ public void searched_successfully() {
 @Then("Searching failed")
 public void searching_failed() {
     // Write code here that turns the phrase above into concrete actions
-	assertFalse(false);
+	assertFalse(Flag);
 }
 }

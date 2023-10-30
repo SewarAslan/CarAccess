@@ -7,6 +7,7 @@ import carAccessories.first.Checker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.junit.CucumberOptions;
 
 public class signupTesting {
 
@@ -19,7 +20,7 @@ public class signupTesting {
 	@When("set Email {string} and Password {string}")
 	public void set_email_and_password(String email, String password) {
 		Checker.testAdd();
-    if(email.contains("@")&&email.contains(".com")&&!email.isBlank()&&!password.isBlank()&&!Checker.checkUser(email, password)) {
+    if(Checker.validEmail(email)&&!password.isBlank()&&!Checker.checkUser(email, password)) {
     	sf=true;
     }
     else sf=false;
