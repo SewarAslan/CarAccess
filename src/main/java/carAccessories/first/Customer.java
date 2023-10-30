@@ -1,5 +1,8 @@
 package carAccessories.first;
 
+import java.time.LocalDateTime;
+import java.util.LinkedList;
+
 public class Customer extends User {
 	public Customer(String Email, String Password) {
 		super(Email, Password);
@@ -35,4 +38,20 @@ public boolean changeMyPass(String oldPass,String newPass) {
 			}
 			else return false;
 }
+
+public static boolean AddRequest(String car_model,LocalDateTime timing,String Proname) {
+	
+	installation req=new installation(car_model,timing,Proname);
+	
+	LinkedList<installation> installions=Installer.get_insta();
+	
+	installions.addLast(req);
+	boolean flag=Installer.scheduling();
+	return true;
+}
+
+
+
+
+
 }
