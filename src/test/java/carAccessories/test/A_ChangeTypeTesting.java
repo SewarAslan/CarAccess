@@ -9,6 +9,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
+
+
+
 public class A_ChangeTypeTesting {
 Admin a=new Admin("sss","123");
 	boolean flag;

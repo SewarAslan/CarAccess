@@ -2,7 +2,7 @@ Feature: A-changeconn
 
 Scenario:  change User Name
     Given want to change a user data
-    When set Email "new3@gmail.com" And Name "Sewar Aslan" And Phone "" And Address ""
+    When set Email "new3@gmail.com" And Name "Sewar" And Phone "" And Address ""
     Then Successfully Conn Changed
     
   Scenario: change User Phone
@@ -34,3 +34,8 @@ Scenario:  change User Name
     Given want to change a user data
     When set Email "new3@gmail.com" And Name "Sewar" And Phone "657458" And Address ""
     Then Changing Conn failed
+    
+    
+    
+    
+  

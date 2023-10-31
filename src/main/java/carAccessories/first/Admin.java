@@ -56,6 +56,7 @@ public boolean changeEmail(String oldEmail,String newEmail) {
 
 }
 
+
 public boolean changePass(String email,String Pass) {
 
 	for(int i=0;i<Checker.accounts.size();i++) {

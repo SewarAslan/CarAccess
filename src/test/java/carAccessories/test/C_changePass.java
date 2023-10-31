@@ -8,13 +8,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
 public class C_changePass {
 	boolean flag;
 	Customer c=new Customer("new4@gmail.com","123123","before","111","Jerusalem");
 	@Given("want to change my pass")
 	public void want_to_change_my_pass() {
 	    flag=false;
-	    System.out.println("Testing pass");
+	    System.out.println("==== C-changePass Testing ====");
 	}
 
 	@When("set oldPass {string} And newPass {string}")
