@@ -123,37 +123,104 @@ public boolean AddProd(String desc,String url,int price,boolean availability,Str
 	
 	return false;
 }
-public boolean editurl(String desc,String url) {
-	if(!desc.isBlank()) {
+public void showAllproducts() {
+	
+	for (int i = 0; i < Initialing.productsLL.size(); i++) {
+	    System.out.println(i + ": " + Initialing.productsLL.get(i));
+	}
+}
+
+public boolean editurl(int index,String url) {
+	
 	for(int i=0;i<Initialing.productsLL.size();i++) {
-		if(desc.equals(Initialing.productsLL.get(i).description)) {
+		if(index==i) {
 			Initialing.productsLL.get(i).url=url;
 			return true;
-	}}}
+	}}
 		return false;}
 
-public boolean editPrice(String desc,int price) {
-	if(!desc.isBlank()) {
+public boolean editPrice(int index,int price) {
+	
 	for(int i=0;i<Initialing.productsLL.size();i++) {
-		if(desc.equals(Initialing.productsLL.get(i).description)) {
+		if(index==i) {
 			Initialing.productsLL.get(i).price=price;
 			return true;
-	}}}
+	}}
 	
 	return false;
 }
-public boolean editavi(String desc) {
+public boolean editavi(int index) {
 	
-	if(!desc.isBlank()) {
-			for (Product prod : Initialing.productsLL) {	
-	String desc2=prod.description;
-        if (desc2.toLowerCase().equals(desc.toLowerCase())) {
-        	prod.availability=!prod.availability;
+	
+	for(int i=0;i<Initialing.productsLL.size();i++) {	
+
+        if (index==i) {
+        	Initialing.productsLL.get(i).availability=!(Initialing.productsLL.get(i).availability);
         	return true;
-        }}}
+        }}
 	
 	return false;
 }
+
+
+public boolean delpro(int index) {
+	
+	for(int i=0;i<Initialing.productsLL.size();i++) {
+		if (index==i) {
+			Initialing.productsLL.remove(Initialing.productsLL.get(i));
+		return true;	
+		}
+	}
+	
+	
+	return false;
+}
+
+public void showAllcategories() {
+	
+	for (int i = 0; i < Initialing.CategoriesLL.size(); i++) {
+	    System.out.println(i + ": " + Initialing.CategoriesLL.get(i));
+	}
+}
+
+
+
+public boolean editcatname(int index,String name) {
+	for(int i=0;i<Initialing.CategoriesLL.size();i++) {
+		if(name.equals(Initialing.CategoriesLL.get(i).categorieName)) {
+			return false;	
+	}}
+	if(!name.isBlank()) {
+		for(int i=0;i<Initialing.CategoriesLL.size();i++) {
+	
+		if(index==i) {
+			Initialing.CategoriesLL.get(i).categorieName=name;
+			return true;
+		}
+		
+	}}
+	return false;
+}
+
+public boolean deletecateg(int index) {
+	
+	for (int i = 0; i < Initialing.CategoriesLL.size(); i++) {
+		if(index==i) {
+			Initialing.CategoriesLL.get(i).categorieofProdLL.clear();
+			Initialing.CategoriesLL.remove(Initialing.CategoriesLL.get(i));
+	return true;
+		}
+
+}
+	return false;}
+
+
+
+
+
+
+
+
 
 
 }
