@@ -50,30 +50,7 @@ public boolean changeMyPass(String oldPass,String newPass) {
 			}
 			else return false;
 }
-public boolean AddRequest(String carModel, String date, String product) {
-	String custEmail=this.Email;
-	if(!carModel.isBlank()&&!date.isBlank()&&!product.isBlank()) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime requestTime = LocalDateTime.parse(date, formatter);
-		if(requestTime.isBefore(LocalDateTime.now()))return false;
-		else {
-			for(int i=0;i<Initialing.installationRequests.size();i++) {
-				
-				if(requestTime.equals(Initialing.installationRequests.get(i).prefered_date_time)) {
-					return false;}
-			}
-			
-			Installation a=new Installation(carModel,date,product,custEmail);
-			Initialing.installationRequests.add(a);
-			return true;
-		}
-			
-	}
-	return false;
-}
-
-
-public boolean Searchproduct(String deSearch) {
+public  boolean Searchproduct(String deSearch) {
 	boolean flag=false;
 	Initialing.SimilarproductsLL.clear();
 	if(!deSearch.isBlank()) {
@@ -108,54 +85,44 @@ private static boolean isValidDatePattern(String dateString) {
 }
 
 
-public boolean makePurch(Product p) {
+public boolean makeSimpleOrder(Product p) {
 	boolean paymentSuccessful=false;
 	if(p.needInst==false) {
 		myOrdersLL.add(p);
 		paymentSuccessful=true;
-		if (paymentSuccessful) {
+		
 			 System.out.println("Purchase completed successfully:");
 			    System.out.println("Item: " + p.description);
 			    System.out.println("Total Price: $" + p.price);
-        } else {
-            System.out.println("Error: Payment failed. Purchase not completed.");
-            
+                   
         }
-	}
-	else {
-		paymentSuccessful=false;	
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please, ANSWER these questions/n what is your car model? ");
-		String car_model = scanner.nextLine();
-		System.out.println("what is your prefered date -----> yyyy-MM-dd HH:mm");
-		String date = scanner.nextLine();
-		if(isValidDatePattern(date)) {paymentSuccessful=true;
+	return paymentSuccessful;}
+	
+	public boolean makeInstOrder(Product p,String car_model,String date) {
+		boolean paymentSuccessful=false;
+		if(p.needInst==true &&!car_model.isBlank()) {
+		if(isValidDatePattern(date)) {
+		paymentSuccessful=true;
 		System.out.println("Thank you!");
 		System.out.println("Please, bring your Car to Our Center at your preferred date");
 		Installation i=new Installation(car_model,date,p.description,this.Email);
 		Initialing.installationRequests.add(i);
 		myInst.add(i);
 		p.status="Pending";
-		myOrdersLL.add(p);}
+		myOrdersLL.add(p);
+		return true;}
 		else {
 			paymentSuccessful=false;
 		System.out.println("wrong date");
 		}
-		
-			
-		
 	}
+	if(paymentSuccessful=false)  System.out.println("Error: Payment failed. Purchase not completed.");
 return paymentSuccessful;
 }
-
 public void viewOrders() {
 	for(Product p: myOrdersLL) {
 		System.out.println(p);
 	}
-}
-
-public LinkedList <Installation> searchMyInst (){
-	return myInst;
 }
 
 

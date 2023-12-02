@@ -1,9 +1,11 @@
 package carAccessories.first;
 
-import java.time.LocalDateTime;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Installer extends User{
+	public  LinkedList<Installation> myInstWork= new LinkedList<Installation>();
+	
 	public Installer(String Email, String Password) {
 		super(Email, Password);
 		Type=2;
@@ -13,21 +15,76 @@ public class Installer extends User{
 		super(Email,Password,Name,Phone,Address);
 		Type=2;
 	}
+	public void AddInstallationToWork(int indexIN) {
+		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
+		    if(i==indexIN) {
+		    	String status="";
+		    			for (Product prod : Initialing.productsLL) {	
+		    	String desc=prod.description;
+		            if (desc.toLowerCase().equals(Initialing.installationRequests.get(i).protname.toLowerCase())) {
+		            	 status=prod.status;
+		            		if(status.equals("Waiting")) {
+		        		    	this.myInstWork.add(Initialing.installationRequests.get(i));
+		        		    	Initialing.installationRequests.remove(i);
+		        		    	prod.status="In Process";
+		            }
+		            		}
+		    }
+		    			}
+		}
+		
+	}
 	
-	public boolean scheduling() {
-		 for (int i = 0; i < Initialing.installationRequests.size(); i++) {
-	            String time = Initialing.installationRequests.get(i).prefered_date_time;
+	public void showAllInstallations() {
+		scheduling(Initialing.installationRequests);
+		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
+		    System.out.println(i + ": " + Initialing.installationRequests.get(i));
+		}
+	}
+	
+	public void showMyInstallations() {
+		scheduling(this.myInstWork);
+		for (int i = 0; i < this.myInstWork.size(); i++) {
+		    System.out.println(i + ": " + this.myInstWork.get(i));
+		}
+	}
+	
+	public void changeStatus(int indexIN) {
+		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
+		    if(i==indexIN) {
+		String status="";
+		for (Product prod : Initialing.productsLL) {	
+String desc=prod.description;
+    if (desc.toLowerCase().equals(Initialing.installationRequests.get(i).protname.toLowerCase())) {
+    	 status=prod.status;
+    		if(status.equals("Pending")) {
+    			prod.status="Waiting";
+    		}
+    		else if(status.equals("In Process")) {
+    			prod.status="Done";
+    		}
+    		}
+    }
+		}
+		}
+		    }
+		
+	
+	public boolean scheduling(LinkedList<Installation> l) {
+		
+		 for (int i = 0; i < l.size(); i++) {
+	            String time = l.get(i).prefered_date_time;
 
-	            for (int j = i + 1; j < Initialing.installationRequests.size(); j++) {
-	                String timing = Initialing.installationRequests.get(j).prefered_date_time;
+	            for (int j = i + 1; j < l.size(); j++) {
+	                String timing = l.get(j).prefered_date_time;
 
 	                int comparisonResult = time.compareTo(timing);
 
 	                if (comparisonResult > 0) {
 	                    // Swap elements at positions i and j
-	                    Installation temp = Initialing.installationRequests.get(i);
-	                    Initialing.installationRequests.set(i, Initialing.installationRequests.get(j));
-	                    Initialing.installationRequests.set(j, temp);
+	                    Installation temp = l.get(i);
+	                    l.set(i, Initialing.installationRequests.get(j));
+	                    l.set(j, temp);
 	                } else if (comparisonResult == 0) {
 	                    return false;
 	                }

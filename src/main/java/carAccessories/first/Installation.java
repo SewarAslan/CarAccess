@@ -12,20 +12,20 @@ public class Installation {
 
 	String car_model;
 	String prefered_date_time;
-	String instname;
+	String protname;
 	String custEmail;
 	public Installation(String car_model,String date,String name,String custEmail) {
 		
 		
 			this.prefered_date_time=date;
 			this.car_model=car_model;
-			this.instname=name;
+			this.protname=name;
 			this.custEmail=custEmail;
 			
 		}
 	
 	public String toString() {
-         String s="Installation Name="+this.instname+"\n Customer Email="+this.custEmail+"\nInstallation Time="+this.prefered_date_time+"\nCar Model="+this.car_model; 
+         String s="Product Name="+this.protname+"\nCar Model="+this.car_model+"\nInstallation Time="+this.prefered_date_time+"\n Customer Email="+this.custEmail; 
     return s; 
 	}
 }

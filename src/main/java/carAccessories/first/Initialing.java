@@ -86,20 +86,12 @@ public  class Initialing {
 		  
 	}
 	
-	public static LocalDateTime DateTime(String s) {
-	
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-	LocalDateTime dateTime = LocalDateTime.parse(s, formatter);
-	return dateTime;
-	}
-
-	   
-	    
+	      
 		 public static void initialInstallation() {
 				
 			
              if(installationRequests.isEmpty()) {
-            	Installation b1=new Installation("Skoda","2024-01-01 12:30","Tires","new7@gmail.com");
+            	Installation b1=new Installation("Skoda","2023-01-01 12:30","Tires","new7@gmail.com");
             	Installation b2=new Installation("mazda","2024-01-02 20:00","Lights","new7@gmail.com");
             	Installation b3=new Installation("kia sorento","2023-12-22 20:00","mirror","new@gmail.com");
             	installationRequests.add(b1);

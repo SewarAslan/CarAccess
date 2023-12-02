@@ -25,24 +25,22 @@ int bef,aft;
 	@When("set size {int}")
 	public void set_size(Integer int1) {
 		bef=c.myOrdersLL.size();
-	   c.makePurch(p);
+	   c.makeSimpleOrder(p);
 	   aft=c.myOrdersLL.size();
 	   
 	}
 
 	@Then("the size will be {int}")
 	public void the_size_will_be(Integer int1) {
-if((aft-bef)==1) {assertTrue(true);}
-	else assertTrue(false);
-	}
+if((aft-bef)==1)assertTrue(true);}
 
-	@When("set size date {string}")
-	public void set_size_date(String string) {
-		
-	    flag=c.makePurch(p2);
 	
-	}
 
+	@When("set size date {string} And car model {string}")
+	public void set_size_date_and_car_model(String date, String model) {
+	    flag=c.makeInstOrder(p2,model,date);
+
+	}
 	@Then("wrong date")
 	public void wrong_date() {
 	    assertFalse(flag);
