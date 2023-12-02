@@ -35,18 +35,23 @@ public class Installer extends User{
 		
 	}
 	
-	public void showAllInstallations() {
+	public String showAllInstallations() {
+		String out="";
+		
 		scheduling(Initialing.installationRequests);
 		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
-		    System.out.println(i + ": " + Initialing.installationRequests.get(i));
+		    out+=i + ": " + Initialing.installationRequests.get(i)+"\n";
 		}
+	return out;
 	}
 	
-	public void showMyInstallations() {
+	public String showMyInstallations() {
+		String out="";
 		scheduling(this.myInstWork);
 		for (int i = 0; i < this.myInstWork.size(); i++) {
-		    System.out.println(i + ": " + this.myInstWork.get(i));
+		    out+=i + ": " + this.myInstWork.get(i)+"\n";
 		}
+		return out;
 	}
 	
 	public void changeStatus(int indexIN) {
@@ -83,7 +88,7 @@ String desc=prod.description;
 	                if (comparisonResult > 0) {
 	                    // Swap elements at positions i and j
 	                    Installation temp = l.get(i);
-	                    l.set(i, Initialing.installationRequests.get(j));
+	                    l.set(i, l.get(j));
 	                    l.set(j, temp);
 	                } else if (comparisonResult == 0) {
 	                    return false;
