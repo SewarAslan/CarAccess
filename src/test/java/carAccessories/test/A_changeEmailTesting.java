@@ -9,7 +9,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import carAccessories.first.Admin;
-import carAccessories.first.Checker;
+import carAccessories.first.Initialing;
 
 
 
@@ -22,7 +22,7 @@ public class A_changeEmailTesting {
 	@Given("want to change a user Email")
 	public void want_to_change_a_user_email() {
 	    flag=false;
-	    Checker.testAdd();
+	    Initialing.initialAccountsLL();
 	}
 
 	@When("set oldEmail {string} And newEmail {string}")

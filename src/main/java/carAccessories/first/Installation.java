@@ -1,29 +1,31 @@
 package carAccessories.first;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class installation {
+import io.cucumber.cienvironment.internal.com.eclipsesource.json.ParseException;
+
+public class Installation {
 
 	String car_model;
-	LocalDateTime prefered_date_time;
+	String prefered_date_time;
 	String instname;
 	String custEmail;
-	
-	public installation(String car_model,String date,String name,String custEmail) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime requestTime = LocalDateTime.parse(date, formatter);
+	public Installation(String car_model,String date,String name,String custEmail) {
 		
-			this.prefered_date_time=requestTime;
+		
+			this.prefered_date_time=date;
 			this.car_model=car_model;
 			this.instname=name;
 			this.custEmail=custEmail;
 			
 		}
+	
 	public String toString() {
          String s="Installation Name="+this.instname+"\n Customer Email="+this.custEmail+"\nInstallation Time="+this.prefered_date_time+"\nCar Model="+this.car_model; 
-    return s;
+    return s; 
 	}
 }

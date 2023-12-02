@@ -3,7 +3,8 @@ package carAccessories.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import carAccessories.first.Checker;
+import carAccessories.first.AuthenAndReg;
+import carAccessories.first.Initialing;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,8 +20,8 @@ public class signupTesting {
 
 	@When("set Email {string} and Password {string}")
 	public void set_email_and_password(String email, String password) {
-		Checker.testAdd();
-    if(Checker.validEmail(email)&&!password.isBlank()&&!Checker.checkUser(email, password)) {
+		Initialing.initialAccountsLL();
+    if(AuthenAndReg.validEmail(email)&&!password.isBlank()&&!AuthenAndReg.checkUser(email, password)) {
     	sf=true;
     }
     else sf=false;

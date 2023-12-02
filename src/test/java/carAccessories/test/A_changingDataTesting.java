@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import carAccessories.first.Admin;
-import carAccessories.first.Checker;
+import carAccessories.first.Initialing;
 import carAccessories.first.Customer;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,15 +22,16 @@ public class A_changingDataTesting {
 
 	@Given("want to change a user data")
 	public void want_to_change_a_user_data() {
+	    Initialing.initialAccountsLL();
 	   flagA=false;
 	   flagC=false;
 	    System.out.println("====Change Data Testing====");
+	   
 
 	}
 
 	@When("set Email {string} And Name {string} And Phone {string} And Address {string}")
 	public void set_email_and_name_and_phone_and_address(String email, String name, String phone, String address) {
-    Checker.testAdd();
 		System.out.printf(" Name="+c.Name+" Phone="+c.Phone+" Address="+c.Address+"\n");
 	  flagA=a.changeData(email, name, phone, address);
 	  flagC=c.changeMyData(email, name, phone, address);

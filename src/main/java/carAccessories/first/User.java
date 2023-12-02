@@ -10,7 +10,9 @@ public class User {
 	public int Type;
 	private  boolean logStateflag;
 	
-	
+	public User() {
+		
+	}
 	public User(String Email,String Password) {
 		super();
 		this.Email=Email;

@@ -1,7 +1,8 @@
 package carAccessories.test;
 
 
-	import carAccessories.first.Checker;
+	import carAccessories.first.AuthenAndReg;
+import carAccessories.first.Initialing;
 	import io.cucumber.java.en.Given;
 	import io.cucumber.java.en.Then;
 	import io.cucumber.java.en.When;
@@ -16,12 +17,13 @@ import static org.junit.Assert.*;
 	@Given("I am not on the system")
 	public void i_am_not_on_the_system() {
 		stateFlag=false;
+	    Initialing.initialAccountsLL();
+
 	}
 
 	@When("set Email {string} And Password {string}")
 	public void set_email_and_password(String email, String password) {
-		Checker.testAdd();
-	   stateFlag=Checker.checkUser(email, password);
+	   stateFlag=AuthenAndReg.checkUser(email, password);
 	}
 
 	@Then("I am on the system")

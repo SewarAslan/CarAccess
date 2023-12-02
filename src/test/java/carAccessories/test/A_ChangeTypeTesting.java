@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import carAccessories.first.Admin;
-import carAccessories.first.Checker;
+import carAccessories.first.Initialing;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,12 +20,12 @@ Admin a=new Admin("sss","123");
 	@Given("Start Point")
 	public void start_point() {
 		flag=false;
+	    Initialing.initialAccountsLL();
 	}
 
 	@When("set Email {string} And newType {int}")
 	public void set_email_and_new_type(String email, int newType) {
-		Checker.testAdd();
-	    flag=a.changeType(email, newType);
+    flag=a.changeType(email, newType);
 	}
 
 

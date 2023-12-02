@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import carAccessories.first.Admin;
-import carAccessories.first.Checker;
+import carAccessories.first.Initialing;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,11 +19,11 @@ public class A_deleteUser {
 	@Given("wants to delete a user")
 	public void wants_to_delete_a_user() {
 	   flag=false;
+	    Initialing.initialAccountsLL();
 	}
 
 	@When("set Email {string}")
 	public void set_email(String email) {
-	  Checker.testAdd();
 	  flag=a.deleteUser(email);
 	  
 	}

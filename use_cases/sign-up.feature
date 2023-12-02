@@ -1,4 +1,4 @@
-Feature: sign-up
+ Feature: sign-up
 
 Scenario: Valid signUp
 Given I am in the sign-up page

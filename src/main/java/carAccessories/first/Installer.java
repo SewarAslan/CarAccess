@@ -15,26 +15,28 @@ public class Installer extends User{
 	}
 	
 	public boolean scheduling() {
-	    for (int i = 0; i < Checker.installations.size(); i++) {
-	        LocalDateTime time = Checker.installations.get(i).prefered_date_time;
+		 for (int i = 0; i < Initialing.installationRequests.size(); i++) {
+	            String time = Initialing.installationRequests.get(i).prefered_date_time;
 
-	        for (int j = i + 1; j < Checker.installations.size(); j++) {
-	            LocalDateTime timing = Checker.installations.get(j).prefered_date_time;
+	            for (int j = i + 1; j < Initialing.installationRequests.size(); j++) {
+	                String timing = Initialing.installationRequests.get(j).prefered_date_time;
 
-	            if (timing.isBefore(time)) {
-	                // Swap elements at positions i and j
-	                installation temp = Checker.installations.get(i);
-	                Checker.installations.set(i, Checker.installations.get(j));
-	                Checker.installations.set(j, temp);
-	            } else if(timing==time) {
-	            	return false;
+	                int comparisonResult = time.compareTo(timing);
+
+	                if (comparisonResult > 0) {
+	                    // Swap elements at positions i and j
+	                    Installation temp = Initialing.installationRequests.get(i);
+	                    Initialing.installationRequests.set(i, Initialing.installationRequests.get(j));
+	                    Initialing.installationRequests.set(j, temp);
+	                } else if (comparisonResult == 0) {
+	                    return false;
+	                }
 	            }
 	        }
+
+	        // Now, the installations list is sorted based on prefered_date_time (as strings)
+	        return true;
 	    }
-	    
-	    // Now, the installations list is sorted based on prefered_date_time
-	    return true;
-	}
 	
 	
 	

@@ -1,7 +1,8 @@
 package carAccessories.test;
 
-import carAccessories.first.Checker;
-import carAccessories.first.product;
+import carAccessories.first.Initialing;
+import carAccessories.first.Customer;
+import carAccessories.first.Product;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,15 +18,16 @@ public class P_DescSearchTesting {
 @Given("The user wants to search")
 public void the_user_wants_to_search() {
 	 flag=false;
-	 Checker.testAdd();
+	 Initialing.initialProductsAndCategories();
 		System.out.println("===== ProducDescSearch Testing====");
 
 }
 
 @When("the user set the name of product {string}")
 public void the_user_set_the_name_of_product(String string) {
-	flag=Checker.Searchproduct(string);
-	for(product prod : Checker.Similarproducts) {
+	Customer c=new Customer();
+	flag=c.Searchproduct(string);
+	for(Product prod : Initialing.SimilarproductsLL) {
 		String desc=prod.description;
 		System.out.println(desc);
 	}

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import carAccessories.first.Admin;
-import carAccessories.first.Checker;
+import carAccessories.first.Initialing;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,11 +17,11 @@ public class A_changePassTesting {
 	@Given("want to change a user pass")
 	public void want_to_change_a_user_pass() {
 	    flag=false;
+	    Initialing.initialAccountsLL();
 	}
 
 	@When("set Email {string} And newPass {string}")
 	public void set_email_and_new_pass(String email, String newPass) {
-	   Checker.testAdd();
 	   flag=b.changePass(email, newPass);
 	}
 
