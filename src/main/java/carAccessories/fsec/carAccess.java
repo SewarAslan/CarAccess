@@ -722,7 +722,6 @@ public class carAccess {
                       ((Installer)u).changeStatustoDone(answerIntIn);
                       EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries:Update","Your Order status [Done]\n Your car is done\nYou can come to take it");
 
-                    	
                    }
                   
                  
