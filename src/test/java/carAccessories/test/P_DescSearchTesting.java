@@ -19,7 +19,6 @@ public class P_DescSearchTesting {
 public void the_user_wants_to_search() {
 	 flag=false;
 	 Initialing.initialProductsAndCategories();
-		System.out.println("===== ProducDescSearch Testing====");
 
 }
 
@@ -27,11 +26,7 @@ public void the_user_wants_to_search() {
 public void the_user_set_the_name_of_product(String string) {
 	Customer c=new Customer();
 	flag=c.Searchproduct(string);
-	for(Product prod : Initialing.SimilarproductsLL) {
-		String desc=prod.description;
-		System.out.println(desc);
-	}
-	System.out.println("flag="+flag);
+	
 
 }
 

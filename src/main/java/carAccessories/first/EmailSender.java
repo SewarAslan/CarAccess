@@ -10,26 +10,25 @@ import java.util.Properties;
 
 import java.util.Properties;
 
-        import javax.mail.Message;
-        import javax.mail.MessagingException;
-        import javax.mail.PasswordAuthentication;
-        import javax.mail.Session;
-        import javax.mail.Transport;
-        import javax.mail.internet.InternetAddress;
-        import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 
-    public static void sendEmail(String Email,String Sub,String Msg) {
+    public static void sendEmail(String sendTo,String Sub,String Msg) {
 
         // Recipient's email ID needs to be mentioned.
-        String to = "lolmoaker@gmail.com";
 
         // Sender's email ID needs to be mentioned
-        String from = "Car Accessouries Center";
+        String from = "lolmoaker@gmail.com";
 
         // Assuming you are sending email from through gmails smtp
-        String host = Email;
+        String host = "smtp.gmail.com";
 
         // Get system properties
         Properties properties = System.getProperties();
@@ -48,7 +47,7 @@ public class EmailSender {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("lolmoaker@gmail.com", "uwzn nefn krib mmod");
+                return new PasswordAuthentication("lolmoaker@gmail.com", "uwznnefnkribmmod");
 
             }
 
@@ -65,7 +64,7 @@ public class EmailSender {
             message.setFrom(new InternetAddress(from));
 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(sendTo));
 
             // Set Subject: header field
             message.setSubject(Sub);

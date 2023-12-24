@@ -13,7 +13,7 @@ public class Installation {
 	String car_model;
 	String prefered_date_time;
 	String protname;
-	String custEmail;
+	public String custEmail;
 	public Installation(String car_model,String date,String name,String custEmail) {
 		
 		

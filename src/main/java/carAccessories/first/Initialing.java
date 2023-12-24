@@ -28,8 +28,9 @@ public  class Initialing {
 			 x.Type=2;
 			 u.Type=3;
 			 z.Type=3;
-		 accounts.add(c);
-		accounts.add(a);
+			 a.Name="Sewar Aslan";
+		 accounts.add(a);
+		accounts.add(c);
 		accounts.add(b);
 		accounts.add(x);
 		accounts.add(u);
@@ -94,6 +95,7 @@ public  class Initialing {
             	Installation b1=new Installation("Skoda","2023-01-01 12:30","Car Alarms","new7@gmail.com");
             	Installation b2=new Installation("mazda","2024-01-02 20:00","In-Car DVD Players","new7@gmail.com");
             	Installation b3=new Installation("kia sorento","2023-12-22 20:00","Car Audio Systems","new@gmail.com");
+            	
             	installationRequests.add(b1);
             	installationRequests.add(b2);
             	installationRequests.add(b3);

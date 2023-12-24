@@ -25,19 +25,16 @@ public class A_changingDataTesting {
 	    Initialing.initialAccountsLL();
 	   flagA=false;
 	   flagC=false;
-	    System.out.println("====Change Data Testing====");
+	   
 	   
 
 	}
 
 	@When("set Email {string} And Name {string} And Phone {string} And Address {string}")
 	public void set_email_and_name_and_phone_and_address(String email, String name, String phone, String address) {
-		System.out.printf(" Name="+c.Name+" Phone="+c.Phone+" Address="+c.Address+"\n");
 	  flagA=a.changeData(email, name, phone, address);
 	  flagC=c.changeMyData(email, name, phone, address);
-	  System.out.printf("Name="+c.Name+" Phone="+c.Phone+" Address="+c.Address+"\n");
-	  System.out.printf("\n%s  %s\n",flagA,flagC);
- 
+
 	}
 
 	@Then("Successfully Conn Changed")

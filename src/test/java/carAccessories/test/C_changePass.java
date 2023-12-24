@@ -15,14 +15,11 @@ public class C_changePass {
 	@Given("want to change my pass")
 	public void want_to_change_my_pass() {
 	    flag=false;
-	    System.out.println("==== C-changePass Testing ====");
 	}
 
 	@When("set oldPass {string} And newPass {string}")
 	public void set_old_pass_and_new_pass(String oldPass, String newPass) {
-	  System.out.println("email: "+c.Email+" oldPass: "+c.Password);
 	  flag=c.changeMyPass(oldPass, newPass);
-	  System.out.println("email: "+c.Email+" newPass: "+c.Password);
 
 	}
 

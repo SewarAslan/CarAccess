@@ -41,7 +41,9 @@ public class Installer extends User{
 		scheduling(Initialing.installationRequests);
 		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
 		    out+=i + ": " + Initialing.installationRequests.get(i)+"\n";
+		    this.changeStatustoWaiting(i);
 		}
+		System.out.println(out);
 	return out;
 	}
 	
@@ -51,21 +53,33 @@ public class Installer extends User{
 		for (int i = 0; i < this.myInstWork.size(); i++) {
 		    out+=i + ": " + this.myInstWork.get(i)+"\n";
 		}
+		System.out.println(out);
 		return out;
 	}
 	
-	public void changeStatus(int indexIN) {
+	public void changeStatustoWaiting(int indexIN) {
+		Product p=null;
 		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
 		    if(i==indexIN) {
-		String status="";
 		for (Product prod : Initialing.productsLL) {	
-String desc=prod.description;
-    if (desc.toLowerCase().equals(Initialing.installationRequests.get(i).protname.toLowerCase())) {
-    	 status=prod.status;
-    		if(status.equals("Pending")) {
+    if (prod.description.equals(Initialing.installationRequests.get(i).protname)) {
+    
+    		if(prod.status.equals("Pending")) {
     			prod.status="Waiting";
     		}
-    		else if(status.equals("In Process")) {
+    		}
+    }
+		}
+		}
+		    }
+		
+	public void changeStatustoDone(int indexIN) {
+		Product p=null;
+		for (int i = 0; i < this.myInstWork.size(); i++) {
+		    if(i==indexIN) {
+		for (Product prod : Initialing.productsLL) {	
+    if (prod.description.equals(this.myInstWork.get(i).protname)) {
+    		if(prod.status.equals("In Process")) {
     			prod.status="Done";
     		}
     		}
@@ -76,14 +90,14 @@ String desc=prod.description;
 		
 	
 	public boolean scheduling(LinkedList<Installation> l) {
-		
+		int comparisonResult=0;
 		 for (int i = 0; i < l.size(); i++) {
 	            String time = l.get(i).prefered_date_time;
 
 	            for (int j = i + 1; j < l.size(); j++) {
 	                String timing = l.get(j).prefered_date_time;
 
-	                int comparisonResult = time.compareTo(timing);
+	                 comparisonResult = time.compareTo(timing);
 
 	                if (comparisonResult > 0) {
 	                    // Swap elements at positions i and j

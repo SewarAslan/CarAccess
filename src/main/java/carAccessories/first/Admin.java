@@ -97,7 +97,7 @@ public boolean AddCate(String name) {
 			return false;	
 	}}
 	if(!name.isBlank()) {
-	Categorie e=new Categorie("name");
+	Categorie e=new Categorie(name);
 	Initialing.CategoriesLL.add(e);
 	return true;}
 	else return false;
@@ -182,7 +182,14 @@ public void showAllcategories() {
 	    System.out.println(i + ": " + Initialing.CategoriesLL.get(i));
 	}
 }
-
+public String showAllUsers() {
+	String out="";
+	for (int i = 0; i < Initialing.accounts.size(); i++) {
+	    out+=i + ": " + Initialing.accounts.get(i);
+	}
+	System.out.println(out);
+	return out;
+}
 
 
 public boolean editcatname(int index,String name) {
