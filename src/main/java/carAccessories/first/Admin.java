@@ -34,27 +34,50 @@ public boolean  deleteUser(String email) {
 	return false;
 }
 
-public boolean changeEmail(String oldEmail,String newEmail) {
-	boolean exist=false;
-	for(int i=0;i<Initialing.accounts.size();i++) {
-		if(oldEmail.equals(Initialing.accounts.get(i).Email)) {
-			
-			if(AuthenAndReg.validEmail(newEmail)) {
-				for(int j=0;j<Initialing.accounts.size();j++) {
-					if(newEmail.equals(Initialing.accounts.get(j).Email)) {
-					exist=true;	
-					}
-				}
-				if(!exist) {
-					Initialing.accounts.get(i).Email=newEmail;
-			return true;
-				}
-			}
-		}
-	}
-	return false;
+public boolean changeEmail(String oldEmail, String newEmail) {
+    if (!isOldEmailValid(oldEmail)) {
+        return false;
+    }
 
+    if (!AuthenAndReg.validEmail(newEmail)) {
+        return false;
+    }
+
+    if (isEmailInUse(newEmail)) {
+        return false;
+    }
+
+    updateAccountEmail(oldEmail, newEmail);
+    return true;
 }
+
+private boolean isOldEmailValid(String oldEmail) {
+    for (User account : Initialing.accounts) {
+        if (oldEmail.equals(account.Email)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+private boolean isEmailInUse(String newEmail) {
+    for (User account : Initialing.accounts) {
+        if (newEmail.equals(account.Email)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+private void updateAccountEmail(String oldEmail, String newEmail) {
+    for (User account : Initialing.accounts) {
+        if (oldEmail.equals(account.Email)) {
+            account.Email = newEmail;
+            break;
+        }
+    }
+}
+
 
 
 public boolean changePass(String email,String Pass) {
