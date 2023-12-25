@@ -18,32 +18,30 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
             </configuration>
         </plugin>
         
- <plugin>
-<groupId>org.jacoco</groupId>
-<artifactId>jacoco-maven-plugin</artifactId>
-<executions>
-<execution>
-<goals>
-<goal>prepare-agent</goal>
-</goals>
-</execution>
-<execution>
-<id>generate-report</id>
-<phase>verify</phase>
-<goals>
-<goal>report</goal>
-</goals>
-</execution>
-</executions>
-<configuration>
-       
-        <properties>
-  <sonar.organization>sewaraslan</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-</properties>
-      </configuration>
-</plugin>
-
+<plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>generate-report</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <properties>
+            <sonar.organization>sewaraslan</sonar.organization>
+            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+          </properties>
+        </configuration>
+      </plugin>
 
     </plugins>
 </build>
