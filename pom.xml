@@ -35,26 +35,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 </goals>
 </execution>
 </executions>
-</plugin>
-
- <plugin>
-      <groupId>org.sonarsource.scanner.maven</groupId>
-      <artifactId>sonar-maven-plugin</artifactId>
-      <version>3.10.0.2594</version>
-      <configuration>
+<configuration>
+       
         <properties>
-          <!-- Disable CI analysis -->
-          <sonar.analysis.mode>preview</sonar.analysis.mode>
-        </properties>
-      </configuration>
-    </plugin>
-
-    </plugins>
-</build>
-<properties>
   <sonar.organization>sewaraslan</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 </properties>
+      </configuration>
+</plugin>
+
+
+    </plugins>
+</build>
+
   
   <dependencies>
 <dependency>
