@@ -7,7 +7,6 @@ public class carAccess {
 
 
 	public static void main(String[] args) {
-
 		
 	    do {
 	    	Initialing.initialAccountsLL();
