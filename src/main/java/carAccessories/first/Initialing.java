@@ -10,7 +10,7 @@ public  class Initialing {
 	public static List<Product> similarproductsLL = new LinkedList<>();
 	public static List<User> accounts = new LinkedList<User>();
 	public static List<Installation> installationRequests= new LinkedList<>();
-	public static List<Categorie> categoriesLL= new LinkedList<Categorie>();
+	public static List<Categorie> categoriesLL= new LinkedList<>();
 	public static final String DEFAULT_PASS = "123123";
         public static final String DEF_IN = "Interior";
         public static final String DEF_EX = "Exterior";
@@ -39,15 +39,15 @@ public  class Initialing {
 		accounts.add(z);
 		 }	
 	}
-	public static Categorie Int=new Categorie(DEF_IN);
-	public static Categorie Ext=new Categorie(DEF_EX);
-	public static Categorie Elect=new Categorie(DEF_EL);
+	public static Categorie inte=new Categorie(DEF_IN);
+	public static Categorie ext=new Categorie(DEF_EX);
+	public static Categorie elect=new Categorie(DEF_EL);
 	public static void initialProductsAndCategories() {
 		
 		if(categoriesLL.isEmpty()) {
-        categoriesLL.add(Int);
-        categoriesLL.add(Ext);
-        categoriesLL.add(Elect);}
+        categoriesLL.add(inte);
+        categoriesLL.add(ext);
+        categoriesLL.add(elect);}
 		
 		  Product p1=new Product("Floor Mats",100,true ,"",DEF_IN,false);
 		  Product p2=new Product("Seat Covers",25,true ,"",DEF_IN,false);
@@ -72,18 +72,18 @@ public  class Initialing {
 				 productsLL.add(p8);
 				 productsLL.add(p9);
 			}
-		  if(Int.categorieofProdLL.isEmpty()&&Ext.categorieofProdLL.isEmpty()&&Elect.categorieofProdLL.isEmpty()) {
-			  Int.categorieofProdLL.add(p1);
-			  Int.categorieofProdLL.add(p2);
-			  Int.categorieofProdLL.add(p3);
+		  if(inte.categorieofProdLL.isEmpty()&&ext.categorieofProdLL.isEmpty()&&elect.categorieofProdLL.isEmpty()) {
+			  inte.categorieofProdLL.add(p1);
+			  inte.categorieofProdLL.add(p2);
+			  inte.categorieofProdLL.add(p3);
 			  
-			  Ext.categorieofProdLL.add(p4);
-			  Ext.categorieofProdLL.add(p5);
-			  Ext.categorieofProdLL.add(p6);
+			  ext.categorieofProdLL.add(p4);
+			  ext.categorieofProdLL.add(p5);
+			  ext.categorieofProdLL.add(p6);
 			  
-			  Elect.categorieofProdLL.add(p7);
-			  Elect.categorieofProdLL.add(p8);
-			  Elect.categorieofProdLL.add(p9);
+			  elect.categorieofProdLL.add(p7);
+			  elect.categorieofProdLL.add(p8);
+			  elect.categorieofProdLL.add(p9);
 			  
 		  }
 		  

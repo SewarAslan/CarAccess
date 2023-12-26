@@ -572,7 +572,7 @@ public class carAccess {
                      else if(answerInt==4) {//View installations
                        	System.out.println("---Viewing my Installations---");
                        	int i=0;
-                      for(Installation c:((Customer)u).myInst) {
+                      for(Installation c:((Customer)u).getMyInst()) {
                     	  System.out.println(i+": "+c);
                     	  i++; }
                       }

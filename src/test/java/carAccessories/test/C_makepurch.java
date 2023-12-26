@@ -24,9 +24,9 @@ Product p2=new Product("In-Car DVD Players",200,true ,"","Electronic",true);
 int bef,aft;
 	@When("set size {int}")
 	public void set_size(Integer int1) {
-		bef=c.myOrdersLL.size();
+		bef=c.getMyOrdersLL().size();
 	   c.makeSimpleOrder(p);
-	   aft=c.myOrdersLL.size();
+	   aft=c.getMyOrdersLL().size();
 	   
 	}
 

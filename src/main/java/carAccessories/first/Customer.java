@@ -9,20 +9,38 @@ import java.util.List;
 public class Customer extends User {
     private static final Logger logger = Logger.getLogger(Customer.class.getName());
 
-	public  List<Installation> myInst= new LinkedList<>();
-	public  List<Product> myOrdersLL= new LinkedList<>();
+	private  List<Installation> myInst= new LinkedList<>();
+	private  List<Product> myOrdersLL= new LinkedList<>();
+public List<Installation> getMyInst() {
+		return myInst;
+	}
+	public void setMyInst(List<Installation> myInst) {
+		this.myInst = myInst;
+	}
+	public List<Product> getMyOrdersLL() {
+		return myOrdersLL;
+	}
+	public void setMyOrdersLL(List<Product> myOrdersLL) {
+		this.myOrdersLL = myOrdersLL;
+	}
+	
 String lline="\n--------------------------------\n";
-	public Customer(String Email, String Password) {
-		super(Email, Password);
+	public Customer(String email, String password) {
+		super(email, password);
 		Type=3;
 		// TODO Auto-generated constructor stub
-	}	public 	Customer(String Email,String Password,String Name,String Phone,String Address) {
-		super(Email,Password,Name,Phone,Address);
+	}	public 	Customer(String email,String password,String name,String phone,String address) {
+		super(email,password,name,phone,address);
 		Type=3;
 	}
 
 	public Customer() {
-		// TODO Auto-generated constructor stub
+		this.Name="";
+		this.Address="";
+		this.Password="";
+		this.Email="";
+		this.Phone="";
+		
 	}
 	public boolean changeMyData(String email,String name,String phone,String address) {
 		
