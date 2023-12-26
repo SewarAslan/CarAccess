@@ -522,7 +522,7 @@ public class carAccess {
                      else if(answerInt==2) {//Make purchases
                        	System.out.println("---Make purchases---");
                        	myObj.nextLine(); 
-                       	Product p = null;
+                       	Product p;
                        	boolean done=false;
                         ((Customer)u).showAllproducts();
                         String prod=null;
@@ -531,30 +531,31 @@ public class carAccess {
                         for(int i=0;i<Initialing.productsLL.size();i++) {
                         	if(answerIntIn==i) {
                         	p=Initialing.productsLL.get(i);
+                        	if(!p.needInst) {
+                            	done=((Customer)u).makeSimpleOrder(p);
+                            	}
+                            else {
+                               System.out.println("$This product need installation$");
+                               myObj.nextLine(); 
+                               System.out.println("do you want us to afford you an installer? y/n");
+                               System.out.println("PS:this will plus 50 to the total price");
+                               answerStringIn=myObj.nextLine();
+                               if(answerStringIn.equalsIgnoreCase("y")) {
+                            	   System.out.println("Please enter your car MODEL");
+                                   String model=myObj.nextLine();
+                                   System.out.println("Please enter Preferred date in this pattern yyyy-MM-dd HH:mm");
+                                   String date=myObj.nextLine();
+                                   done=((Customer)u).makeInstOrder(p, model, date);
+                                   EmailSender.sendEmail(u.Email,"Car Accessouries: 1st Update","Your Order status[Pending]\n we are waiting for you to bring the car to Our Center");
+                                   ///1st notification< {order status: pending--->the order is waiting for you to bring the car
+                               }
+                               else if(answerStringIn.equalsIgnoreCase("n")) {
+                            	   done=((Customer)u).makeSimpleOrder(p);
+                               }
+                            }   
                         	}
                         }
-                        if(!p.needInst) {
-                        	done=((Customer)u).makeSimpleOrder(p);
-                        	}
-                        else {
-                           System.out.println("$This product need installation$");
-                           myObj.nextLine(); 
-                           System.out.println("do you want us to afford you an installer? y/n");
-                           System.out.println("PS:this will plus 50 to the total price");
-                           answerStringIn=myObj.nextLine();
-                           if(answerStringIn.equalsIgnoreCase("y")) {
-                        	   System.out.println("Please enter your car MODEL");
-                               String model=myObj.nextLine();
-                               System.out.println("Please enter Preferred date in this pattern yyyy-MM-dd HH:mm");
-                               String date=myObj.nextLine();
-                               done=((Customer)u).makeInstOrder(p, model, date);
-                               EmailSender.sendEmail(u.Email,"Car Accessouries: 1st Update","Your Order status[Pending]\n we are waiting for you to bring the car to Our Center");
-                               ///1st notification< {order status: pending--->the order is waiting for you to bring the car
-                           }
-                           else if(answerStringIn.equalsIgnoreCase("n")) {
-                        	   done=((Customer)u).makeSimpleOrder(p);
-                           }
-                        }   
+                        
                         if(done) {
                         System.out.println("***Success***");}
                         else {

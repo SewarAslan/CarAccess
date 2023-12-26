@@ -25,7 +25,7 @@ String lline="\n--------------------------------\n";
 		// TODO Auto-generated constructor stub
 	}
 	public boolean changeMyData(String email,String name,String phone,String address) {
-		email=this.Email;
+		
 		
 				if(name.isBlank()&&phone.isBlank()&&!address.isBlank()) {
 					this.Address=address;
