@@ -2,6 +2,9 @@ package carAccessories.first;
 
 public class AuthenAndReg {
 	 public static boolean emailAv;
+	 private AuthenAndReg() {
+		 
+	 }
 		public static boolean checkUser(String email,String password) {
 			
 	        emailAv=false;

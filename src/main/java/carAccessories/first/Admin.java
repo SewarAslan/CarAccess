@@ -1,9 +1,12 @@
 package carAccessories.first;
 
 import java.util.Iterator;
+import java.util.logging.Logger;
+
 
 public class Admin extends User{
-	
+    private static final Logger logger = Logger.getLogger(Admin.class.getName());
+
 	public Admin(String email, String password) {
 		super(email, password);
 		Type=1;
@@ -153,7 +156,7 @@ public boolean addProd(String desc,String url,int price,boolean availability,Str
 public void showAllproducts() {
 	
 	for (int i = 0; i < Initialing.productsLL.size(); i++) {
-	    System.out.println(i + ": " + Initialing.productsLL.get(i));
+	    logger.info(i + ": " + Initialing.productsLL.get(i));
 	}
 }
 
@@ -206,7 +209,7 @@ public boolean delpro(int index) {
 public void showAllcategories() {
 	
 	for (int i = 0; i < Initialing.categoriesLL.size(); i++) {
-	    System.out.println(i + ": " + Initialing.categoriesLL.get(i));
+	    logger.info(i + ": " + Initialing.categoriesLL.get(i));
 	}
 }
 public String showAllUsers() {
@@ -214,7 +217,7 @@ public String showAllUsers() {
 	for (int i = 0; i < Initialing.accounts.size(); i++) {
 	    out+=i + ": " + Initialing.accounts.get(i);
 	}
-	System.out.println(out);
+	logger.info(out);
 	return out;
 }
 

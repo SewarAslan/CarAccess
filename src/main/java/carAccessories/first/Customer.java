@@ -1,15 +1,14 @@
 package carAccessories.first;
+import java.util.logging.Logger;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+
 
 
 public class Customer extends User {
+    private static final Logger logger = Logger.getLogger(Customer.class.getName());
+
 	public  List<Installation> myInst= new LinkedList<>();
 	public  List<Product> myOrdersLL= new LinkedList<>();
 String lline="\n--------------------------------\n";
@@ -26,8 +25,7 @@ String lline="\n--------------------------------\n";
 		// TODO Auto-generated constructor stub
 	}
 	public boolean changeMyData(String email,String name,String phone,String address) {
-		String em=email;
-		em=this.Email;
+		email=this.Email;
 		
 				if(name.isBlank()&&phone.isBlank()&&!address.isBlank()) {
 					this.Address=address;
@@ -62,8 +60,8 @@ public  boolean Searchproduct(String deSearch) {
   		  flag= true;
         }}}
 	for(Product p:Initialing.similarproductsLL) {
-		System.out.println(p);
-		System.out.println(lline);
+		logger.info(p.toString());
+		logger.info(lline);
 		}
 	return flag;
 	
@@ -71,11 +69,10 @@ public  boolean Searchproduct(String deSearch) {
 public void showAllproducts() {
 	
 	for (int i = 0; i < Initialing.productsLL.size(); i++) {
-	    System.out.println(i + ": " + Initialing.productsLL.get(i));
-		System.out.println(lline);
+	    logger.info(i + ": " + Initialing.productsLL.get(i));
+		logger.info(lline);
 	}
 }
-private static final String EXPECTED_DATE_PATTERN = "yyyy-MM-dd HH:mm";
 private static boolean isValidDatePattern(String dateString) {
     // Check if the user input matches the expected pattern
     return dateString.matches("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}$");
@@ -87,9 +84,9 @@ public boolean makeSimpleOrder(Product p) {
 		myOrdersLL.add(p);
 		paymentSuccessful=true;
 		
-			 System.out.println("Purchase completed successfully:");
-			    System.out.println("Item: " + p.description);
-			    System.out.println(" Price: $" + p.price);
+			 logger.info("Purchase completed successfully:");
+			    logger.info("Item: " + p.description);
+			    logger.info(" Price: $" + p.price);
                    
         
 	return paymentSuccessful;}
@@ -99,10 +96,10 @@ public boolean makeSimpleOrder(Product p) {
 		if(p.needInst==true &&!car_model.isBlank()) {
 		if(isValidDatePattern(date)) {
 		paymentSuccessful=true;
-		System.out.println("Item: " + p.description);
-	    System.out.println(" Price: $" + (p.price+50));
-	    System.out.println("Thank you!");
-		System.out.println("Please, bring your Car to Our Center at your preferred date");
+		logger.info("Item: " + p.description);
+	    logger.info(" Price: $" + (p.price+50));
+	    logger.info("Thank you!");
+		logger.info("Please, bring your Car to Our Center at your preferred date");
 		
 		Installation i=new Installation(car_model,date,p.description,this.Email);
 		Initialing.installationRequests.add(i);
@@ -112,18 +109,18 @@ public boolean makeSimpleOrder(Product p) {
 		return true;}
 		else {
 			paymentSuccessful=false;
-		System.out.println("wrong date,Try again Later");
+		logger.info("wrong date,Try again Later");
 		}
 	}
-	if(paymentSuccessful==false)  System.out.println("Error: Payment failed. Purchase not completed.");
+	if(paymentSuccessful==false)  logger.info("Error: Payment failed. Purchase not completed.");
 return paymentSuccessful;
 }
 public void viewOrders() {
 	for(Product p: myOrdersLL) {
-		System.out.println(p);
+		logger.info(p.toString());
 		
 	}
-	System.out.println(lline);
+	logger.info(lline);
 }
 
 
