@@ -28,7 +28,7 @@ String lline="\n--------------------------------\n";
 	public Customer(String email, String password) {
 		super(email, password);
 		Type=3;
-		// TODO Auto-generated constructor stub
+	
 	}	public 	Customer(String email,String password,String name,String phone,String address) {
 		super(email,password,name,phone,address);
 		Type=3;
@@ -42,7 +42,7 @@ String lline="\n--------------------------------\n";
 		this.Phone="";
 		
 	}
-	public boolean changeMyData(String email,String name,String phone,String address) {
+	public boolean changeMyData(String name,String phone,String address) {
 		
 		
 				if(name.isBlank()&&phone.isBlank()&&!address.isBlank()) {
@@ -67,7 +67,7 @@ public boolean changeMyPass(String oldPass,String newPass) {
 			}
 			else return false;
 }
-public  boolean Searchproduct(String deSearch) {
+public  boolean searchProduct(String deSearch) {
 	boolean flag=false;
 	Initialing.similarproductsLL.clear();
 	if(!deSearch.isBlank()) {
@@ -98,22 +98,20 @@ private static boolean isValidDatePattern(String dateString) {
 
 
 public boolean makeSimpleOrder(Product p) {
-	boolean paymentSuccessful=false;
 		myOrdersLL.add(p);
-		paymentSuccessful=true;
+		
 		
 			 logger.info("Purchase completed successfully:");
 			    logger.info("Item: " + p.description);
 			    logger.info(" Price: $" + p.price);
                    
         
-	return paymentSuccessful;}
+	return true;}
 	
 	public boolean makeInstOrder(Product p,String car_model,String date) {
-		boolean paymentSuccessful=false;
+		
 		if(p.needInst==true &&!car_model.isBlank()) {
 		if(isValidDatePattern(date)) {
-		paymentSuccessful=true;
 		logger.info("Item: " + p.description);
 	    logger.info(" Price: $" + (p.price+50));
 	    logger.info("Thank you!");
@@ -126,12 +124,12 @@ public boolean makeSimpleOrder(Product p) {
 		myOrdersLL.add(p);
 		return true;}
 		else {
-			paymentSuccessful=false;
+			
 		logger.info("wrong date,Try again Later");
 		}
 	}
-	if(paymentSuccessful==false)  logger.info("Error: Payment failed. Purchase not completed.");
-return paymentSuccessful;
+		logger.info("Error: Payment failed. Purchase not completed.");
+return false;
 }
 public void viewOrders() {
 	for(Product p: myOrdersLL) {

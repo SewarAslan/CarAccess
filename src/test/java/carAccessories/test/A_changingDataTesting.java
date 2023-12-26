@@ -33,7 +33,7 @@ public class A_changingDataTesting {
 	@When("set Email {string} And Name {string} And Phone {string} And Address {string}")
 	public void set_email_and_name_and_phone_and_address(String email, String name, String phone, String address) {
 	  flagA=a.changeData(email, name, phone, address);
-	  flagC=c.changeMyData(email, name, phone, address);
+	  flagC=c.changeMyData( name, phone, address);
 
 	}
 

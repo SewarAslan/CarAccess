@@ -512,7 +512,7 @@ public class carAccess {
                         myObj.nextLine();  
                          System.out.println("please Enter the description of the product you want");
                          answerStringIn= myObj.nextLine();       
-                         boolean done=((Customer)u).Searchproduct(answerStringIn);
+                         boolean done=((Customer)u).searchProduct(answerStringIn);
                          if(done) {
                              System.out.println("***this is the similar products***");}
                              else {
@@ -625,7 +625,7 @@ public class carAccess {
                                System.out.println("Please enter your NEW Name ");
                                
                                String newName=myObj.nextLine();
-                               boolean done1=((Customer) u).changeMyData(Email, newName,"","");
+                               boolean done1=((Customer) u).changeMyData( newName,"","");
                                if(done1) {
                                System.out.println(SuccessMsg);}
                                else {
@@ -640,7 +640,7 @@ public class carAccess {
                                 System.out.println("Please enter your NEW phone ");
                                 
                                 String newP=myObj.nextLine();
-                                boolean done1=((Customer) u).changeMyData(Email,"",newP,"");
+                                boolean done1=((Customer) u).changeMyData("",newP,"");
                                 if(done1) {
                                 System.out.println(SuccessMsg);}
                                 else {
@@ -655,7 +655,7 @@ public class carAccess {
                                 System.out.println("Please enter your NEW Address ");
                                 myObj.nextLine();
                                 String newAdd=myObj.nextLine();
-                                boolean done1=((Customer) u).changeMyData(Email, "","",newAdd);
+                                boolean done1=((Customer) u).changeMyData( "","",newAdd);
                                 if(done1) {
                                 System.out.println(SuccessMsg);}
                                 else {

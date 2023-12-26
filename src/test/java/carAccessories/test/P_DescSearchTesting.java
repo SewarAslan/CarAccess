@@ -25,7 +25,7 @@ public void the_user_wants_to_search() {
 @When("the user set the name of product {string}")
 public void the_user_set_the_name_of_product(String string) {
 	Customer c=new Customer();
-	flag=c.Searchproduct(string);
+	flag=c.searchProduct(string);
 	
 
 }
