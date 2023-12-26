@@ -60,7 +60,7 @@ public class scedTest {
 
 	@Then("I should see the new appointment in the scheduled list")
 	public void i_should_see_the_new_appointment_in_the_scheduled_list() {
-		 Installation lastAppointment = Initialing.installationRequests.getLast();
+		 Installation lastAppointment = Initialing.installationRequests.get(Initialing.installationRequests.size()-1);
 	        assertEquals("Toyota", lastAppointment.car_model);
 	        assertEquals("2026-06-15 14:00", lastAppointment.prefered_date_time);
 	        assertEquals("Car GPS Systems", lastAppointment.protname);

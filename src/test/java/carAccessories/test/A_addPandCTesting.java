@@ -44,7 +44,7 @@ public class A_addPandCTesting {
 
 	@When("set name Catetname {string}")
 	public void set_name_catetname(String string) {
-		flag=a.AddCate(string);
+		flag=a.addCate(string);
 	    
 	}
 

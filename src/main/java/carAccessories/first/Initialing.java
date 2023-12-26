@@ -1,18 +1,16 @@
 package carAccessories.first;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.HashSet;
+
 import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
+
 
 public  class Initialing {
  
-	public static LinkedList<Product> productsLL = new LinkedList<Product>();
-	public static LinkedList<Product> SimilarproductsLL = new LinkedList<Product>();
-	public static LinkedList<User> accounts = new LinkedList<User>();
-	public static LinkedList<Installation> installationRequests= new LinkedList<Installation>();
-	public static LinkedList<Categorie> CategoriesLL= new LinkedList<Categorie>();
+	public static List<Product> productsLL = new LinkedList<>();
+	public static List<Product> similarproductsLL = new LinkedList<>();
+	public static List<User> accounts = new LinkedList<User>();
+	public static List<Installation> installationRequests= new LinkedList<>();
+	public static List<Categorie> categoriesLL= new LinkedList<Categorie>();
 	public static final String DEFAULT_PASS = "123123";
         public static final String DEF_IN = "Interior";
         public static final String DEF_EX = "Exterior";
@@ -46,10 +44,10 @@ public  class Initialing {
 	public static Categorie Elect=new Categorie(DEF_EL);
 	public static void initialProductsAndCategories() {
 		
-		if(CategoriesLL.isEmpty()) {
-        CategoriesLL.add(Int);
-        CategoriesLL.add(Ext);
-        CategoriesLL.add(Elect);}
+		if(categoriesLL.isEmpty()) {
+        categoriesLL.add(Int);
+        categoriesLL.add(Ext);
+        categoriesLL.add(Elect);}
 		
 		  Product p1=new Product("Floor Mats",100,true ,"",DEF_IN,false);
 		  Product p2=new Product("Seat Covers",25,true ,"",DEF_IN,false);

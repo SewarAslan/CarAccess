@@ -24,7 +24,7 @@ public class deletecateg {
 	@When("set categorie index {int}")
 	public void set_categorie_index(Integer int1) {
 	    // Write code here that turns the phrase above into concrete actions
-		if((int1>0)&&(int1<(Initialing.CategoriesLL.size()+1))) {
+		if((int1>0)&&(int1<(Initialing.categoriesLL.size()+1))) {
 			
 			f=a.deletecateg(int1);
 		}

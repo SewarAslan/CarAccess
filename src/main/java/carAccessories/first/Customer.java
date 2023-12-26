@@ -4,13 +4,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 
 public class Customer extends User {
-	public  LinkedList<Installation> myInst= new LinkedList<Installation>();
-	public  LinkedList<Product> myOrdersLL= new LinkedList<Product>();
+	public  List<Installation> myInst= new LinkedList<>();
+	public  List<Product> myOrdersLL= new LinkedList<>();
 String lline="\n--------------------------------\n";
 	public Customer(String Email, String Password) {
 		super(Email, Password);
@@ -52,15 +53,15 @@ public boolean changeMyPass(String oldPass,String newPass) {
 }
 public  boolean Searchproduct(String deSearch) {
 	boolean flag=false;
-	Initialing.SimilarproductsLL.clear();
+	Initialing.similarproductsLL.clear();
 	if(!deSearch.isBlank()) {
 			for (Product prod : Initialing.productsLL) {	
 	String desc=prod.description;
         if (desc.toLowerCase().contains(deSearch.toLowerCase())) {
-        	 Initialing.SimilarproductsLL.add(prod);
+        	 Initialing.similarproductsLL.add(prod);
   		  flag= true;
         }}}
-	for(Product p:Initialing.SimilarproductsLL) {
+	for(Product p:Initialing.similarproductsLL) {
 		System.out.println(p);
 		System.out.println(lline);
 		}

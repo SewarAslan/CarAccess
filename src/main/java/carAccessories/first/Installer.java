@@ -1,6 +1,7 @@
 package carAccessories.first;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Installer extends User{
@@ -89,21 +90,21 @@ public class Installer extends User{
 		    }
 		
 	
-	public boolean scheduling(LinkedList<Installation> l) {
+	public boolean scheduling(List<Installation> installationRequests) {
 		int comparisonResult=0;
-		 for (int i = 0; i < l.size(); i++) {
-	            String time = l.get(i).prefered_date_time;
+		 for (int i = 0; i < installationRequests.size(); i++) {
+	            String time = installationRequests.get(i).prefered_date_time;
 
-	            for (int j = i + 1; j < l.size(); j++) {
-	                String timing = l.get(j).prefered_date_time;
+	            for (int j = i + 1; j < installationRequests.size(); j++) {
+	                String timing = installationRequests.get(j).prefered_date_time;
 
 	                 comparisonResult = time.compareTo(timing);
 
 	                if (comparisonResult > 0) {
 	                    // Swap elements at positions i and j
-	                    Installation temp = l.get(i);
-	                    l.set(i, l.get(j));
-	                    l.set(j, temp);
+	                    Installation temp = installationRequests.get(i);
+	                    installationRequests.set(i, installationRequests.get(j));
+	                    installationRequests.set(j, temp);
 	                } else if (comparisonResult == 0) {
 	                    return false;
 	                }

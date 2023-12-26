@@ -69,7 +69,7 @@ public class carAccess {
                     System.out.println("Please enter the name of the NEW Categorie");
                    
                     answerStringIn=myObj.nextLine();
-                    boolean done=((Admin) u).AddCate(answerStringIn);
+                    boolean done=((Admin) u).addCate(answerStringIn);
                     if(done) {
                         System.out.println(SuccessMsg);}
                         else {

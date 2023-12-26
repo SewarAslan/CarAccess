@@ -25,11 +25,11 @@ public class editcatname {
 	@When("set index {int} and categorie name to {string}")
 	public void set_index_and_categorie_name_to(Integer int1, String string) {
 	    // Write code here that turns the phrase above into concrete actions
-	   if((int1>0)&&(int1<(Initialing.CategoriesLL.size()+1))) {
+	   if((int1>0)&&(int1<(Initialing.categoriesLL.size()+1))) {
 		f=a.editcatname(int1, string);
 		
 	   }
-	   System.out.print(Initialing.CategoriesLL.get(int1).toString());
+	   System.out.print(Initialing.categoriesLL.get(int1).toString());
 	}
 
 	@Then("Success Changed")

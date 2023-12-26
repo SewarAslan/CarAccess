@@ -1,5 +1,7 @@
 package carAccessories.first;
 
+import java.util.Iterator;
+
 public class Admin extends User{
 	
 	public Admin(String email, String password) {
@@ -23,15 +25,18 @@ public boolean changeType(String email,int newType) {
 		return false;
 }
 public boolean  deleteUser(String email) {
-	for(int i=0;i<Initialing.accounts.size();i++) {
-		if(email.equals(Initialing.accounts.get(i).Email)&&!email.equals("Sewar@gmail.com")) {
-			
-			Initialing.accounts.remove(i);
-			return true;
-		}
+
+	    Iterator<User> iterator = Initialing.accounts.iterator();
+	    while (iterator.hasNext()) {
+	        User account = iterator.next();
+	        if (email.equals(account.Email) && !email.equals("Sewar@gmail.com")) {
+	            iterator.remove(); // Safely removes the element from the list
+	            return true;
+	        }
+	    }
+	    return false;
 	}
-	return false;
-}
+
 
 public boolean changeEmail(String oldEmail, String newEmail) {
     if (!isOldEmailValid(oldEmail)) {
@@ -113,14 +118,14 @@ public boolean changeData(String email,String name,String phone,String address) 
 		}}
 	return false;
 }
-public boolean AddCate(String name) {
-	for(int i=0;i<Initialing.CategoriesLL.size();i++) {
-		if(name.equals(Initialing.CategoriesLL.get(i).categorieName)) {
+public boolean addCate(String name) {
+	for(int i=0;i<Initialing.categoriesLL.size();i++) {
+		if(name.equals(Initialing.categoriesLL.get(i).categorieName)) {
 			return false;	
 	}}
 	if(!name.isBlank()) {
 	Categorie e=new Categorie(name);
-	Initialing.CategoriesLL.add(e);
+	Initialing.categoriesLL.add(e);
 	return true;}
 	else return false;
 	
@@ -134,7 +139,7 @@ public boolean addProd(String desc,String url,int price,boolean availability,Str
 	}}
 		
 	
-		for(Categorie c : Initialing.CategoriesLL) {
+		for(Categorie c : Initialing.categoriesLL) {
 			if(type.equalsIgnoreCase(c.categorieName)&&!desc.isBlank()&&!type.isBlank()) {
 				Product p=new Product(desc,price,availability,url,type,needIN);
 				c.categorieofProdLL.add(p);
@@ -200,8 +205,8 @@ public boolean delpro(int index) {
 
 public void showAllcategories() {
 	
-	for (int i = 0; i < Initialing.CategoriesLL.size(); i++) {
-	    System.out.println(i + ": " + Initialing.CategoriesLL.get(i));
+	for (int i = 0; i < Initialing.categoriesLL.size(); i++) {
+	    System.out.println(i + ": " + Initialing.categoriesLL.get(i));
 	}
 }
 public String showAllUsers() {
@@ -215,15 +220,15 @@ public String showAllUsers() {
 
 
 public boolean editcatname(int index,String name) {
-	for(int i=0;i<Initialing.CategoriesLL.size();i++) {
-		if(name.equals(Initialing.CategoriesLL.get(i).categorieName)) {
+	for(int i=0;i<Initialing.categoriesLL.size();i++) {
+		if(name.equals(Initialing.categoriesLL.get(i).categorieName)) {
 			return false;	
 	}}
 	if(!name.isBlank()) {
-		for(int i=0;i<Initialing.CategoriesLL.size();i++) {
+		for(int i=0;i<Initialing.categoriesLL.size();i++) {
 	
 		if(index==i) {
-			Initialing.CategoriesLL.get(i).categorieName=name;
+			Initialing.categoriesLL.get(i).categorieName=name;
 			return true;
 		}
 		
@@ -233,10 +238,10 @@ public boolean editcatname(int index,String name) {
 
 public boolean deletecateg(int index) {
 	
-	for (int i = 0; i < Initialing.CategoriesLL.size(); i++) {
+	for (int i = 0; i < Initialing.categoriesLL.size(); i++) {
 		if(index==i) {
-			Initialing.CategoriesLL.get(i).categorieofProdLL.clear();
-			Initialing.CategoriesLL.remove(Initialing.CategoriesLL.get(i));
+			Initialing.categoriesLL.get(i).categorieofProdLL.clear();
+			Initialing.categoriesLL.remove(Initialing.categoriesLL.get(i));
 	return true;
 		}
 
