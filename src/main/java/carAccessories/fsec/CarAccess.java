@@ -29,25 +29,25 @@ public class CarAccess {
 	    Scanner myObj = new Scanner(System.in);
 	    String answer = myObj.nextLine();
 	    int answerInt;
-	    String Email;
-	    String Password;
+	    String userEmail;
+	    String userPassword;
 	    if(answer.equalsIgnoreCase("y")) {
 	    	logger.info("Please enter your Email: ");
-			Email= myObj.nextLine();
+			userEmail= myObj.nextLine();
 			
 			logger.info("Please enter your Password: ");
-			Password= myObj.nextLine();	
-            boolean userInFlag=AuthenAndReg.checkUser(Email, Password);
+			userPassword= myObj.nextLine();	
+            boolean userInFlag=AuthenAndReg.checkUser(userEmail, userPassword);
             if(userInFlag) {
-            User u=AuthenAndReg.getTypeUser(Email);
+            User u=AuthenAndReg.getTypeUser(userEmail);
             logger.info("--------------------------------------------------------------");
 
             while(u.Type==1) {//admin
            int answerIntIn;
        	int answerIntInIn;
 
+       	
            String answerStringIn;
-           answerInt=-1;
             logger.info("---Welcome Admin "+u.Name+msg);
             logger.info("1. Manage Categories");
             logger.info("2. Manage Products");
@@ -79,7 +79,7 @@ public class CarAccess {
                         	logger.info(failMsg);
                         }}
                   else     if(answerIntIn==2) {//Edit Categorie
-                    	answerIntInIn=-1;
+                    	
 
                        	logger.info("---Editing Categorie---");
                        	
@@ -97,7 +97,7 @@ public class CarAccess {
                         }
                         	}
                     else   if(answerIntIn==3) {//Delete Categorie
-                    answerIntInIn=-1;
+                    
                       	logger.info("---Deleting Categorie---");
                       	myObj.nextLine(); 
                       	((Admin) u).showAllcategories();
@@ -122,8 +122,8 @@ public class CarAccess {
               
             }
             while(answerInt==2) {// manage products
-            	answerIntIn=-1;
-            	answerIntInIn=-1;
+            	
+            	
             logger.info("---Managing Products---");
             logger.info(msg);
             logger.info("1. Add Product");
@@ -148,19 +148,19 @@ public class CarAccess {
                 int price=myObj.nextInt();
                 logger.info("Please enter the Type of the NEW product");
                 myObj.nextLine();
-                String Type=myObj.nextLine();
+                String ttype=myObj.nextLine();
                 logger.info("does it need installation y/N");
                 
-                String NI=myObj.nextLine();
+                String ni=myObj.nextLine();
                 myObj.nextLine();
                boolean done=false;
-                if(NI.equals("y")||NI.equals("Y")) {
+                if(ni.equals("y")||ni.equals("Y")) {
                 	
-                	done=((Admin) u).addProd(desc, url, price, true, Type, true);
+                	done=((Admin) u).addProd(desc, url, price, true, ttype, true);
                    
-                }else if(NI.equals("n")||NI.equals("N")) {
+                }else if(ni.equals("n")||ni.equals("N")) {
        
-                	done=((Admin) u).addProd(desc, url, price, true, Type, false);
+                	done=((Admin) u).addProd(desc, url, price, true, ttype, false);
                   
                 }
                 else done=false;
@@ -173,7 +173,7 @@ public class CarAccess {
                 
             else     if(answerIntIn==2) {//Edit product price
             	   myObj.nextLine();
-            	   answerIntInIn=-1;
+            	   
                    	logger.info("---Editing product price---");
                    	((Admin) u).showAllproducts();
                     logger.info(msg3);
@@ -189,7 +189,7 @@ public class CarAccess {
                     	}
                else   if(answerIntIn==3) {//edit product url 
             	   logger.info("---Editing product url---");
-            	   answerIntInIn=-1;
+            	  
             	   myObj.nextLine();
                   	((Admin) u).showAllproducts();
                    logger.info(msg3);
@@ -206,7 +206,7 @@ public class CarAccess {
                   	}
                else     if(answerIntIn==4) {//edit product avi
             	   logger.info("---Editing product Avialability---");
-            	   answerIntInIn=-1;
+            	   
                   	((Admin) u).showAllproducts();
                    logger.info(msg3);
                    answerIntInIn=myObj.nextInt();
@@ -218,7 +218,7 @@ public class CarAccess {
                    }
                   	}
                else if(answerIntIn==5) {//Delete product
-            	   answerIntInIn=-1;
+            	   
             	   myObj.nextLine();
                   	logger.info("---Deleting Product---");
                   	((Admin) u).showAllproducts();
@@ -243,7 +243,7 @@ public class CarAccess {
             
             while(answerInt==3) {// manage userAcc
             	myObj.nextLine();
-            	answerIntIn=-1;
+            	
                 logger.info("---Managing Users Accounts---");
                 logger.info(msg);
                 logger.info("1. Add User");
@@ -279,7 +279,7 @@ public class CarAccess {
                     logger.info("what its type customer/admin/installer");
                     
                     String t=myObj.nextLine();
-                    answerIntInIn=-1;
+                    
                     User a = null;
                    boolean done=false;
                     if(t.equalsIgnoreCase("customer")) {
@@ -336,18 +336,18 @@ public class CarAccess {
                 	   logger.info("---Editing User password---");
                 	   myObj.nextLine();
                       	((Admin) u).showAllUsers();
-                      	String Em=null;
+                      	String emm=null;
                        logger.info(msg4);
                        answerIntIn=myObj.nextInt();
                        for(int i=0;i<Initialing.accounts.size();i++) {
                        	if(i==answerIntIn) {
-                       		Em=Initialing.accounts.get(i).Email;
+                       		emm=Initialing.accounts.get(i).Email;
                        	}
                        }
                        logger.info("Please enter the NEW pass of the user");
                        myObj.nextLine();
                        String newPass=myObj.nextLine();
-                       boolean done1=((Admin) u).changePass(Em, newPass);
+                       boolean done1=((Admin) u).changePass(emm, newPass);
                        if(done1) {
                        logger.info(successMsg);}
                        else {
@@ -358,18 +358,18 @@ public class CarAccess {
                 	   logger.info("---Editing User name---");
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
-                     	String Em=null;
+                     	String emm=null;
                       logger.info(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
-                      		Em=Initialing.accounts.get(i).Email;
+                      		emm=Initialing.accounts.get(i).Email;
                       	}
                       }
                       logger.info("Please enter the NEW Name of the user");
                       myObj.nextLine();
                       String newName=myObj.nextLine();
-                      boolean done1=((Admin) u).changeData(Em, newName,"","");
+                      boolean done1=((Admin) u).changeData(emm, newName,"","");
                       if(done1) {
                       logger.info(successMsg);}
                       else {
@@ -381,18 +381,18 @@ public class CarAccess {
                 	   logger.info("---Editing User PHONE---");
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
-                     	String Em=null;
+                     	String emm=null;
                       logger.info(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
-                      		Em=Initialing.accounts.get(i).Email;
+                      		emm=Initialing.accounts.get(i).Email;
                       	}
                       }
                       logger.info("Please enter the NEW PHONE of the user");
                       myObj.nextLine();
                       String newP=myObj.nextLine();
-                      boolean done1=((Admin) u).changeData(Em,"",newP,"");
+                      boolean done1=((Admin) u).changeData(emm,"",newP,"");
                       if(done1) {
                       logger.info(successMsg);}
                       else {
@@ -404,18 +404,18 @@ public class CarAccess {
                 	   logger.info("---Editing User Address---");
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
-                     	String Em=null;
+                     	String emm=null;
                       logger.info(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
-                      		Em=Initialing.accounts.get(i).Email;
+                      		emm=Initialing.accounts.get(i).Email;
                       	}
                       }
                       logger.info("Please enter the NEW Address of the user");
                       myObj.nextLine();
                       String newAdd=myObj.nextLine();
-                      boolean done1=((Admin) u).changeData(Em,"","",newAdd);
+                      boolean done1=((Admin) u).changeData(emm,"","",newAdd);
                       if(done1) {
                       logger.info(successMsg);}
                       else {
@@ -427,12 +427,12 @@ public class CarAccess {
                 	   logger.info("---Editing User Address---");
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
-                     	String Em=null;
+                     	String emm=null;
                       logger.info(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
-                      		Em=Initialing.accounts.get(i).Email;
+                      		emm=Initialing.accounts.get(i).Email;
                       	}
                       }
                       logger.info("what its type customer/admin/installer");
@@ -448,7 +448,7 @@ public class CarAccess {
                       else if(t.equalsIgnoreCase("installer")) {
                     	tt=2;
                       }
-                      done=((Admin)u).changeType(Em, tt);
+                      done=((Admin)u).changeType(emm, tt);
                       if(done) {
                       logger.info(successMsg);}
                       else {
@@ -460,15 +460,15 @@ public class CarAccess {
                 	   logger.info("---Deleting User---");
                 	   myObj.nextLine();
                     	((Admin) u).showAllUsers();
-                    	String Em=null;
+                    	String emm=null;
                      logger.info(msg4);
                      answerIntIn=myObj.nextInt();
                      for(int i=0;i<Initialing.accounts.size();i++) {
                      	if(i==answerIntIn) {
-                     		Em=Initialing.accounts.get(i).Email;
+                     		emm=Initialing.accounts.get(i).Email;
                      	}
                      }
-                       boolean done1=((Admin) u).deleteUser(Em);
+                       boolean done1=((Admin) u).deleteUser(emm);
                        if(done1) {
                        logger.info(successMsg);}
                        else {
@@ -490,7 +490,7 @@ public class CarAccess {
             }
             else if(answerInt<1&&answerInt>4) {
             logger.info(msg5);	
-            continue;	
+            
             }
             }
             
@@ -582,7 +582,7 @@ public class CarAccess {
                      
                      while(answerInt==5) {// managing my account
                      	myObj.nextLine();
-                     	answerIntIn=-1;
+                     	
                          logger.info("---Managing My Account---");
                          logger.info(msg);
       
@@ -752,7 +752,7 @@ public class CarAccess {
 }
 	    }
 	    else if(answer.equalsIgnoreCase("n")){//new account
-	    	int answerIntIn=-1;
+	    	int answerIntIn;
 	    	boolean done=false;
 	    	 logger.info("You must be a new visitor please sign in to continue");
 	    	 logger.info("1.Sign In");
@@ -791,7 +791,7 @@ public class CarAccess {
                      	logger.info(failMsg);
                      }}
              else if(answerIntIn==2) {// cancel
-                	 break;
+                	 continue;
                 	 }
          
           
