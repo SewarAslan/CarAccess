@@ -720,9 +720,9 @@ public class CarAccess {
                            }
                      logger.info("This is all INSTALLATIONs available to take\n Please enter the # of the INSTALLATION you want to START work with");
                      answerIntIn=myObj.nextInt();
-                     ((Installer)u).AddInstallationToWork(answerIntIn);
+                     ((Installer)u).addInstallationToWork(answerIntIn);
                      //3rd notification {In Process-----> the installation is In process
-                     EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries: 3rd Update","Your Order status[In Process]\n Installer is WORKING on it");
+                     EmailSender.sendEmail(((Installer)u).getMyInstWork().get(answerIntIn).custEmail,"Car Accessouries: 3rd Update","Your Order status[In Process]\n Installer is WORKING on it");
                   }
                   else if(answerInt==4) {//check as done 
                 		logger.info("---Let's schedual an appointment---");
@@ -730,7 +730,7 @@ public class CarAccess {
                       logger.info("This is all your INSTALLATIONs \n Please enter the # of the INSTALLATION you finished working with");
                       answerIntIn=myObj.nextInt();
                       ((Installer)u).changeStatustoDone(answerIntIn);
-                      EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries: 4th Update","Your Order status [Done]\n Your car is done\nYou can come to take it");
+                      EmailSender.sendEmail(((Installer)u).getMyInstWork().get(answerIntIn).custEmail,"Car Accessouries: 4th Update","Your Order status [Done]\n Your car is done\nYou can come to take it");
 
                    }
                   

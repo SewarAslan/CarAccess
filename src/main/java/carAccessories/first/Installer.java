@@ -1,40 +1,55 @@
 package carAccessories.first;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.logging.Logger;
+
 
 public class Installer extends User{
-	public  LinkedList<Installation> myInstWork= new LinkedList<Installation>();
+    private static final Logger logger = Logger.getLogger(Installer.class.getName());
+
+	private  List<Installation> myInstWork= new LinkedList<>();
 	
-	public Installer(String Email, String Password) {
-		super(Email, Password);
+	public List<Installation> getMyInstWork() {
+		return myInstWork;
+	}
+	public void setMyInstWork(List<Installation> myInstWork) {
+		this.myInstWork = myInstWork;
+	}
+	public Installer(String email, String password) {
+		super(email, password);
 		Type=2;
-		// TODO Auto-generated constructor stub
+
 	}
-	public 	Installer(String Email,String Password,String Name,String Phone,String Address) {
-		super(Email,Password,Name,Phone,Address);
+	public 	Installer(String email,String password,String name,String phone,String address) {
+		super(email,password,name,phone,address);
 		Type=2;
 	}
-	public void AddInstallationToWork(int indexIN) {
-		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
-		    if(i==indexIN) {
-		    	String status="";
-		    			for (Product prod : Initialing.productsLL) {	
-		    	String desc=prod.description;
-		            if (desc.toLowerCase().equals(Initialing.installationRequests.get(i).protname.toLowerCase())) {
-		            	 status=prod.status;
-		            		if(status.equals("Waiting")) {
-		        		    	this.myInstWork.add(Initialing.installationRequests.get(i));
-		        		    	Initialing.installationRequests.remove(i);
-		        		    	prod.status="In Process";
-		            }
-		            		}
-		    }
-		    			}
-		}
-		
+	public void addInstallationToWork(int indexIN) {
+	    Iterator<Installation> iterator = Initialing.installationRequests.iterator();
+	    
+	    while (iterator.hasNext()) {
+	        Installation installation = iterator.next();
+	        String status = "";
+
+	        for (Product prod : Initialing.productsLL) {
+	            String desc = prod.description;
+
+	            if (desc.equalsIgnoreCase(installation.protname)) {
+	                status = prod.status;
+
+	                if (status.equalsIgnoreCase("Waiting")) {
+	                    this.myInstWork.add(installation);
+	                    iterator.remove(); // Safely remove using iterator
+
+	                    prod.status = "In Process";
+	                }
+	            }
+	        }
+	    }
 	}
+
 	
 	public String showAllInstallations() {
 		String out="";
@@ -44,7 +59,7 @@ public class Installer extends User{
 		    out+=i + ": " + Initialing.installationRequests.get(i)+"\n";
 		    this.changeStatustoWaiting(i);
 		}
-		System.out.println(out);
+		logger.info(out);
 	return out;
 	}
 	
@@ -54,20 +69,17 @@ public class Installer extends User{
 		for (int i = 0; i < this.myInstWork.size(); i++) {
 		    out+=i + ": " + this.myInstWork.get(i)+"\n";
 		}
-		System.out.println(out);
+		logger.info(out);
 		return out;
 	}
 	
 	public void changeStatustoWaiting(int indexIN) {
-		Product p=null;
+		
 		for (int i = 0; i < Initialing.installationRequests.size(); i++) {
 		    if(i==indexIN) {
 		for (Product prod : Initialing.productsLL) {	
-    if (prod.description.equals(Initialing.installationRequests.get(i).protname)) {
-    
-    		if(prod.status.equals("Pending")) {
+    if (prod.description.equals(Initialing.installationRequests.get(i).protname)&&prod.status.equals("Pending")) {
     			prod.status="Waiting";
-    		}
     		}
     }
 		}
@@ -75,14 +87,13 @@ public class Installer extends User{
 		    }
 		
 	public void changeStatustoDone(int indexIN) {
-		Product p=null;
+		
 		for (int i = 0; i < this.myInstWork.size(); i++) {
 		    if(i==indexIN) {
 		for (Product prod : Initialing.productsLL) {	
-    if (prod.description.equals(this.myInstWork.get(i).protname)) {
-    		if(prod.status.equals("In Process")) {
+    if (prod.description.equals(this.myInstWork.get(i).protname)&&prod.status.equals("In Process")) {
     			prod.status="Done";
-    		}
+    		
     		}
     }
 		}

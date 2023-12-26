@@ -35,16 +35,16 @@ public class I_showMyInst {
 		i.changeStatustoWaiting(4);
 		i.changeStatustoWaiting(5);
 		test3=p1.status;
-		i.AddInstallationToWork(3);
-		i.AddInstallationToWork(4);
-		i.AddInstallationToWork(5);
+		i.addInstallationToWork(3);
+		i.addInstallationToWork(4);
+		i.addInstallationToWork(5);
 		test4=p1.status;
 		i.changeStatustoDone(0);
 		i.changeStatustoDone(1);
 		i.changeStatustoDone(2);
 		out1=i.showMyInstallations();
 		test5=p1.status;
-		out2="0: " + i.myInstWork.get(0).toString()+"\n"+"1: " + i.myInstWork.get(1).toString()+"\n"+"2: " + i.myInstWork.get(2).toString()+"\n";
+		out2="0: " + i.getMyInstWork().get(0).toString()+"\n"+"1: " + i.getMyInstWork().get(1).toString()+"\n"+"2: " + i.getMyInstWork().get(2).toString()+"\n";
 
 	}
 
