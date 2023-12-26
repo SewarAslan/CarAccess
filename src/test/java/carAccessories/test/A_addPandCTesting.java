@@ -22,7 +22,7 @@ public class A_addPandCTesting {
 	public void set_productname_and_type_and_price_and_avil_to_and_need_inst_to(String desc, String type, Integer price, String avi, String needIN) {
 		boolean B1=Boolean.parseBoolean(avi);
 		boolean B2=Boolean.parseBoolean(needIN);
-		flag=a.AddProd(desc,"",price, B1,type, B2);
+		flag=a.addProd(desc,"",price, B1,type, B2);
 	}
 	
 	

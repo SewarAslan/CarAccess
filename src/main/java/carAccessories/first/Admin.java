@@ -2,33 +2,32 @@ package carAccessories.first;
 
 public class Admin extends User{
 	
-	public Admin(String Email, String Password) {
-		super(Email, Password);
+	public Admin(String email, String password) {
+		super(email, password);
 		Type=1;
 	}
-	public 	Admin(String Email,String Password,String Name,String Phone,String Address) {
-		super(Email,Password,Name,Phone,Address);
+	public 	Admin(String email,String password,String name,String phone,String address) {
+		super(email,password,name,phone,address);
 		Type=1;
 	}
 
 public boolean changeType(String email,int newType) {
 	
 		for(int i=0;i<Initialing.accounts.size();i++) {
-			if(email.equals(Initialing.accounts.get(i).Email)) {
-				if(Initialing.accounts.get(i).Type==3) {
+			if(email.equals(Initialing.accounts.get(i).Email)&&Initialing.accounts.get(i).Type==3) {
 				Initialing.accounts.get(i).Type=newType;
 				return true;
-				}
+				
 			}
 		}
 		return false;
 }
 public boolean  deleteUser(String email) {
 	for(int i=0;i<Initialing.accounts.size();i++) {
-		if(email.equals(Initialing.accounts.get(i).Email)) {
-			if(!email.equals("Sewar@gmail.com")) {
+		if(email.equals(Initialing.accounts.get(i).Email)&&!email.equals("Sewar@gmail.com")) {
+			
 			Initialing.accounts.remove(i);
-			return true;}
+			return true;
 		}
 	}
 	return false;
@@ -80,14 +79,14 @@ private void updateAccountEmail(String oldEmail, String newEmail) {
 
 
 
-public boolean changePass(String email,String Pass) {
+public boolean changePass(String email,String pass) {
 
 	for(int i=0;i<Initialing.accounts.size();i++) {
-		if(email.equals(Initialing.accounts.get(i).Email)) {
-			if(!Pass.isBlank()) {
-			Initialing.accounts.get(i).Password=Pass;
+		if(email.equals(Initialing.accounts.get(i).Email)&&!pass.isBlank()) {
+			
+			Initialing.accounts.get(i).Password=pass;
 			return true;
-			}
+			
 		}
 	}
 	return false;
@@ -127,8 +126,8 @@ public boolean AddCate(String name) {
 	
 }
 
-public boolean AddProd(String desc,String url,int price,boolean availability,String Type,boolean needIN) {
-	
+public boolean addProd(String desc,String url,int price,boolean availability,String type,boolean needIN) {
+
 	for(int i=0;i<Initialing.productsLL.size();i++) {
 		if(desc.equals(Initialing.productsLL.get(i).description)) {
 			return false;	
@@ -136,8 +135,8 @@ public boolean AddProd(String desc,String url,int price,boolean availability,Str
 		
 	
 		for(Categorie c : Initialing.CategoriesLL) {
-			if(Type.equalsIgnoreCase(c.categorieName)&&!desc.isBlank()&&!Type.isBlank()) {
-				Product p=new Product(desc,price,availability,url,Type,needIN);
+			if(type.equalsIgnoreCase(c.categorieName)&&!desc.isBlank()&&!type.isBlank()) {
+				Product p=new Product(desc,price,availability,url,type,needIN);
 				c.categorieofProdLL.add(p);
 				Initialing.productsLL.add(p);
 				return true;

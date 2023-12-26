@@ -13,14 +13,18 @@ public  class Initialing {
 	public static LinkedList<User> accounts = new LinkedList<User>();
 	public static LinkedList<Installation> installationRequests= new LinkedList<Installation>();
 	public static LinkedList<Categorie> CategoriesLL= new LinkedList<Categorie>();
-	
+	public static final String DEFAULT_PASS = "123123";
+        public static final String DEF_IN = "Interior";
+        public static final String DEF_EX = "Exterior";
+        public static final String DEF_EL = "Electronic";
+
 	public static void initialAccountsLL() {
-		 User a=new Admin("Sewar@gmail.com","123123");
-		User c=new Admin("Noor@gmail.com","123123");
-		 User b=new Customer("sew@gmail.com","123123");
-		 User x=new Installer("new@gmail.com","123123");
-		 User u=new Customer("new2@gmail.com","123123");
-	  User z=new Customer("new3@gmail.com","123123","Name","10989","Jerusalem");
+		 User a=new Admin("Sewar@gmail.com",DEFAULT_PASS);
+		User c=new Admin("Noor@gmail.com",DEFAULT_PASS);
+		 User b=new Customer("sew@gmail.com",DEFAULT_PASS);
+		 User x=new Installer("new@gmail.com",DEFAULT_PASS);
+		 User u=new Customer("new2@gmail.com",DEFAULT_PASS);
+	  User z=new Customer("new3@gmail.com",DEFAULT_PASS,"Name","10989","Jerusalem");
 	  if(accounts.isEmpty()) {
 			 c.Type=1;
 			 a.Type=1;
@@ -37,9 +41,9 @@ public  class Initialing {
 		accounts.add(z);
 		 }	
 	}
-	public static Categorie Int=new Categorie("Interior");
-	public static Categorie Ext=new Categorie("Exterior");
-	public static Categorie Elect=new Categorie("Electronic");
+	public static Categorie Int=new Categorie(DEF_IN);
+	public static Categorie Ext=new Categorie(DEF_EX);
+	public static Categorie Elect=new Categorie(DEF_EL);
 	public static void initialProductsAndCategories() {
 		
 		if(CategoriesLL.isEmpty()) {
@@ -47,17 +51,17 @@ public  class Initialing {
         CategoriesLL.add(Ext);
         CategoriesLL.add(Elect);}
 		
-		  Product p1=new Product("Floor Mats",100,true ,"","Interior",false);
-		  Product p2=new Product("Seat Covers",25,true ,"","Interior",false);
-		  Product p3=new Product("Steering Wheel Covers",10,true," ","Interior",false);
+		  Product p1=new Product("Floor Mats",100,true ,"",DEF_IN,false);
+		  Product p2=new Product("Seat Covers",25,true ,"",DEF_IN,false);
+		  Product p3=new Product("Steering Wheel Covers",10,true," ",DEF_IN,false);
 		  
-		  Product p4=new Product("Car Covers",75,true ,"","Exterior",false);
-		  Product p5=new Product("Windshield Sun Shades",25,true,"","Exterior",false);
-		  Product p6=new Product("License Plate Frames",55,true,"","Exterior",false);
+		  Product p4=new Product("Car Covers",75,true ,"",DEF_EX,false);
+		  Product p5=new Product("Windshield Sun Shades",25,true,"",DEF_EX,false);
+		  Product p6=new Product("License Plate Frames",55,true,"",DEF_EX,false);
 		  
-		  Product p7=new Product("Car Alarms",75,true,"","Electronic",true);
-		  Product p8=new Product("In-Car DVD Players",200,true ,"","Electronic",true);
-		  Product p9=new Product("Car Audio Systems",55,true,"","Electronic",true);
+		  Product p7=new Product("Car Alarms",75,true,"",DEF_EL,true);
+		  Product p8=new Product("In-Car DVD Players",200,true ,"",DEF_EL,true);
+		  Product p9=new Product("Car Audio Systems",55,true,"",DEF_EL,true);
 		  
 		  if(productsLL.isEmpty()) {
 				 productsLL.add(p1);

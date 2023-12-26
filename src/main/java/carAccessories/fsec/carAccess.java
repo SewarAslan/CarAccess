@@ -7,11 +7,18 @@ public class carAccess {
 
 
 	public static void main(String[] args) {
+		String msg=" what do you WANT to do?";
+		String msg2="please Enter the # of the service";
+		String msg3="please Enter the # of the product you wanna edit";
+		String msg4="please Enter the # of user you wanna edit";
+		String msg5="wrong #, TRY Again";
+		String failMsg="***Failed, Try again***";
+		String SuccessMsg="***Success***";
 		
 	    do {
 	    	Initialing.initialAccountsLL();
 	    	Initialing.initialProductsAndCategories();
-	    	
+	
         System.out.println("---Welcome to our Car Accessories center---");
         System.out.println("press X to cancel");
 	    System.out.println("Hi, do you have an account? y/n");
@@ -38,22 +45,22 @@ public class carAccess {
 
            String answerStringIn;
            answerInt=-1;
-            System.out.println("---Welcome Admin "+u.Name+", what do you WANT to do?---");
+            System.out.println("---Welcome Admin "+u.Name+msg);
             System.out.println("1. Manage Categories");
             System.out.println("2. Manage Products");
             System.out.println("3. Manage User accounts");
             System.out.println("4. logOut");
-            System.out.println("please Enter the # of the service");
+            System.out.println(msg2);
              answerInt= myObj.nextInt();
             while(answerInt==1) {//manage categories
             	System.out.println("---Managing Categories---");
-                System.out.println(" what do you WANT to do?");
+                System.out.println(msg);
                 System.out.println("1. Add Categorie");
                 System.out.println("2. Edit Categorie");
                 System.out.println("3. Delete Categorie");
                 System.out.println("4. Show Categories");
                 System.out.println("5. Back");
-                System.out.println("please Enter the # of the service");
+                System.out.println(msg2);
                 answerIntIn= myObj.nextInt();  
                   if(answerIntIn==1) {//Add Categorie
                 	  myObj.nextLine(); 
@@ -64,9 +71,9 @@ public class carAccess {
                     answerStringIn=myObj.nextLine();
                     boolean done=((Admin) u).AddCate(answerStringIn);
                     if(done) {
-                        System.out.println("***Successfully Added***");}
+                        System.out.println(SuccessMsg);}
                         else {
-                        	System.out.println("***Failed, Try again***");
+                        	System.out.println(failMsg);
                         }}
                   else     if(answerIntIn==2) {//Edit Categorie
                     	answerIntInIn=-1;
@@ -81,9 +88,9 @@ public class carAccess {
                         answerStringIn=myObj.nextLine();
                         boolean done1=((Admin) u).editcatname(answerIntInIn,answerStringIn );
                         if(done1) {
-                        System.out.println("***Successfully Edited***");}
+                        System.out.println(SuccessMsg);}
                         else {
-                        	System.out.println("***Failed, Try again***");
+                        	System.out.println(failMsg);
                         }
                         	}
                     else   if(answerIntIn==3) {//Delete Categorie
@@ -95,9 +102,9 @@ public class carAccess {
                        answerIntInIn=myObj.nextInt();
                        boolean done1=((Admin) u).deletecateg(answerIntInIn);
                        if(done1) {
-                       System.out.println("***Successfully Deleted***");}
+                       System.out.println(SuccessMsg);}
                        else {
-                       	System.out.println("***Failed, Try again***");
+                       	System.out.println(failMsg);
                        }
                        	}
                    else  if(answerIntIn==4) {//show Categories
@@ -115,7 +122,7 @@ public class carAccess {
             	answerIntIn=-1;
             	answerIntInIn=-1;
             System.out.println("---Managing Products---");
-            System.out.println(" what do you WANT to do?");
+            System.out.println(msg);
             System.out.println("1. Add Product");
             System.out.println("2. Edit Product price");
             System.out.println("3. Edit Product url");
@@ -123,7 +130,7 @@ public class carAccess {
             System.out.println("5. Delete Product");
             System.out.println("6. Show Products");
             System.out.println("7. Back");
-            System.out.println("please Enter the # of the service");
+            System.out.println(msg2);
             answerIntIn= myObj.nextInt();  
              if(answerIntIn==1) {//Add Product
                	System.out.println("---Adding Product---");
@@ -146,18 +153,18 @@ public class carAccess {
                boolean done=false;
                 if(NI.equals("y")||NI.equals("Y")) {
                 	
-                	done=((Admin) u).AddProd(desc, url, price, true, Type, true);
+                	done=((Admin) u).addProd(desc, url, price, true, Type, true);
                    
                 }else if(NI.equals("n")||NI.equals("N")) {
        
-                	done=((Admin) u).AddProd(desc, url, price, true, Type, false);
+                	done=((Admin) u).addProd(desc, url, price, true, Type, false);
                   
                 }
                 else done=false;
                 if(done) {
-                    System.out.println("***Successfully Added***");}
+                    System.out.println(SuccessMsg);}
                     else {
-                    	System.out.println("***Failed, Try again***");
+                    	System.out.println(failMsg);
                     }}
               
                 
@@ -166,15 +173,15 @@ public class carAccess {
             	   answerIntInIn=-1;
                    	System.out.println("---Editing product price---");
                    	((Admin) u).showAllproducts();
-                    System.out.println("please Enter the # of the product you wanna edit");
+                    System.out.println(msg3);
                     answerIntInIn=myObj.nextInt();
                     System.out.println("Please enter the NEW price of the product");
                     int priceIn=myObj.nextInt();
                     boolean done1=((Admin) u).editPrice(answerIntInIn, priceIn);
                     if(done1) {
-                    System.out.println("***Successfully Edited***");}
+                    System.out.println(SuccessMsg);}
                     else {
-                    	System.out.println("***Failed, Try again***");
+                    	System.out.println(failMsg);
                     }
                     	}
                else   if(answerIntIn==3) {//edit product url 
@@ -182,29 +189,29 @@ public class carAccess {
             	   answerIntInIn=-1;
             	   myObj.nextLine();
                   	((Admin) u).showAllproducts();
-                   System.out.println("please Enter the # of the product you wanna edit");
+                   System.out.println(msg3);
                    answerIntInIn=myObj.nextInt();
                    System.out.println("Please enter the NEW url of the product");
                    myObj.nextLine();
                    answer=myObj.nextLine();
                    boolean done1=((Admin) u).editurl(answerIntInIn, answer);
                    if(done1) {
-                   System.out.println("***Successfully Edited***");}
+                   System.out.println(SuccessMsg);}
                    else {
-                   	System.out.println("***Failed, Try again***");
+                   	System.out.println(failMsg);
                    }
                   	}
                else     if(answerIntIn==4) {//edit product avi
             	   System.out.println("---Editing product Avialability---");
             	   answerIntInIn=-1;
                   	((Admin) u).showAllproducts();
-                   System.out.println("please Enter the # of the product you wanna edit");
+                   System.out.println(msg3);
                    answerIntInIn=myObj.nextInt();
                    boolean done1=((Admin) u).editavi(answerIntInIn);
                    if(done1) {
-                   System.out.println("***Successfully Edited***");}
+                   System.out.println(SuccessMsg);}
                    else {
-                   	System.out.println("***Failed, Try again***");
+                   	System.out.println(failMsg);
                    }
                   	}
                else if(answerIntIn==5) {//Delete product
@@ -216,9 +223,9 @@ public class carAccess {
                    answerIntInIn=myObj.nextInt();
                    boolean done1=((Admin) u).delpro(answerIntInIn);
                    if(done1) {
-                   System.out.println("***Successfully Deleted***");}
+                   System.out.println(SuccessMsg);}
                    else {
-                   	System.out.println("***Failed, Try again***");
+                   	System.out.println(failMsg);
                    }
                    	}
                else if(answerIntIn==6) {//show products
@@ -235,7 +242,7 @@ public class carAccess {
             	myObj.nextLine();
             	answerIntIn=-1;
                 System.out.println("---Managing Users Accounts---");
-                System.out.println(" what do you WANT to do?");
+                System.out.println(msg);
                 System.out.println("1. Add User");
                 System.out.println("2. Edit USER Email");
                 System.out.println("3. Edit USER Password");
@@ -246,7 +253,7 @@ public class carAccess {
                 System.out.println("8. Delete User");
                 System.out.println("9. Show Users");
                 System.out.println("10. Back");
-                System.out.println("please Enter the # of the service");
+                System.out.println(msg2);
                 answerIntIn= myObj.nextInt();  
                 if(answerIntIn==1) {//Add User
                    	System.out.println("---Adding User---");
@@ -293,9 +300,9 @@ public class carAccess {
                     }
                     
                     if(done) {
-                        System.out.println("***Successfully Added***");}
+                        System.out.println(SuccessMsg);}
                         else {
-                        	System.out.println("***Failed, Try again***");
+                        	System.out.println(failMsg);
                         }}
                   
                     
@@ -305,7 +312,7 @@ public class carAccess {
                        	myObj.nextLine();
                        	((Admin) u).showAllUsers();
                        	String oldEm=null;
-                        System.out.println("please Enter the # of user you wanna edit");
+                        System.out.println(msg4);
                         answerIntIn=myObj.nextInt();
                         for(int i=0;i<Initialing.accounts.size();i++) {
                         	if(i==answerIntIn) {
@@ -317,9 +324,9 @@ public class carAccess {
                         String newEm=myObj.nextLine();
                         boolean done1=((Admin) u).changeEmail(oldEm, newEm);
                         if(done1) {
-                        System.out.println("***Successfully Edited***");}
+                        System.out.println(SuccessMsg);}
                         else {
-                        	System.out.println("***Failed, Try again***");
+                        	System.out.println(failMsg);
                         }
                         	}
                    else if(answerIntIn==3) {//edit user pass
@@ -327,7 +334,7 @@ public class carAccess {
                 	   myObj.nextLine();
                       	((Admin) u).showAllUsers();
                       	String Em=null;
-                       System.out.println("please Enter the # of user you wanna edit");
+                       System.out.println(msg4);
                        answerIntIn=myObj.nextInt();
                        for(int i=0;i<Initialing.accounts.size();i++) {
                        	if(i==answerIntIn) {
@@ -339,9 +346,9 @@ public class carAccess {
                        String newPass=myObj.nextLine();
                        boolean done1=((Admin) u).changePass(Em, newPass);
                        if(done1) {
-                       System.out.println("***Successfully Edited***");}
+                       System.out.println(SuccessMsg);}
                        else {
-                       	System.out.println("***Failed, Try again***");
+                       	System.out.println(failMsg);
                        }
                       	}
                    else if(answerIntIn==4) {//edit user name
@@ -349,7 +356,7 @@ public class carAccess {
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
                      	String Em=null;
-                      System.out.println("please Enter the # of user you wanna edit");
+                      System.out.println(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
@@ -361,9 +368,9 @@ public class carAccess {
                       String newName=myObj.nextLine();
                       boolean done1=((Admin) u).changeData(Em, newName,"","");
                       if(done1) {
-                      System.out.println("***Successfully Edited***");}
+                      System.out.println(SuccessMsg);}
                       else {
-                      	System.out.println("***Failed, Try again***");
+                      	System.out.println(failMsg);
                       
                        }
                       	}
@@ -372,7 +379,7 @@ public class carAccess {
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
                      	String Em=null;
-                      System.out.println("please Enter the # of user you wanna edit");
+                      System.out.println(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
@@ -384,9 +391,9 @@ public class carAccess {
                       String newP=myObj.nextLine();
                       boolean done1=((Admin) u).changeData(Em,"",newP,"");
                       if(done1) {
-                      System.out.println("***Successfully Edited***");}
+                      System.out.println(SuccessMsg);}
                       else {
-                      	System.out.println("***FaIled, Try again***");
+                      	System.out.println(failMsg);
                       
                        }
                       	}
@@ -395,7 +402,7 @@ public class carAccess {
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
                      	String Em=null;
-                      System.out.println("please Enter the # of user you wanna edit");
+                      System.out.println(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
@@ -407,9 +414,9 @@ public class carAccess {
                       String newAdd=myObj.nextLine();
                       boolean done1=((Admin) u).changeData(Em,"","",newAdd);
                       if(done1) {
-                      System.out.println("***Successfully Edited***");}
+                      System.out.println(SuccessMsg);}
                       else {
-                      	System.out.println("***FaIled, Try again***");
+                      	System.out.println(failMsg);
                       
                        }
                       	}
@@ -418,7 +425,7 @@ public class carAccess {
                 	   myObj.nextLine();
                      	((Admin) u).showAllUsers();
                      	String Em=null;
-                      System.out.println("please Enter the # of user you wanna edit");
+                      System.out.println(msg4);
                       answerIntIn=myObj.nextInt();
                       for(int i=0;i<Initialing.accounts.size();i++) {
                       	if(i==answerIntIn) {
@@ -440,9 +447,9 @@ public class carAccess {
                       }
                       done=((Admin)u).changeType(Em, tt);
                       if(done) {
-                      System.out.println("***Successfully Edited***");}
+                      System.out.println(SuccessMsg);}
                       else {
-                      	System.out.println("***FaIled, Try again***");
+                      	System.out.println(failMsg);
                       
                        }
                       	}
@@ -451,7 +458,7 @@ public class carAccess {
                 	   myObj.nextLine();
                     	((Admin) u).showAllUsers();
                     	String Em=null;
-                     System.out.println("please Enter the # of user you wanna edit");
+                     System.out.println(msg4);
                      answerIntIn=myObj.nextInt();
                      for(int i=0;i<Initialing.accounts.size();i++) {
                      	if(i==answerIntIn) {
@@ -460,9 +467,9 @@ public class carAccess {
                      }
                        boolean done1=((Admin) u).deleteUser(Em);
                        if(done1) {
-                       System.out.println("***Successfully Deleted***");}
+                       System.out.println(SuccessMsg);}
                        else {
-                       	System.out.println("***Failed, Try again***");
+                       	System.out.println(failMsg);
                        }
                        	}
                    else if(answerIntIn==9) {//show users
@@ -479,7 +486,7 @@ public class carAccess {
             	break;
             }
             else if(answerInt<1&&answerInt>4) {
-            System.out.println("wrong #, TRY Again");	
+            System.out.println(msg5);	
             continue;	
             }
             }
@@ -491,14 +498,14 @@ public class carAccess {
                     String answerStringIn;
                     
                     answerInt=-1;
-                     System.out.println("---Welcome Custumer "+u.Name+", what do you WANT to do?---");
+                     System.out.println("---Welcome Custumer "+u.Name+msg);
                      System.out.println("1. Browse products");
                      System.out.println("2. Make purchases");
                      System.out.println("3. view All orders");
                      System.out.println("4. view my Installation");
                      System.out.println("5. Edit Profile");
                      System.out.println("6. logOut");
-                     System.out.println("please Enter the # of the service");
+                     System.out.println(msg2);
                       answerInt= myObj.nextInt();
                      if(answerInt==1) {//Browse products
                      	System.out.println("---Browsing products---");
@@ -541,7 +548,7 @@ public class carAccess {
                                System.out.println("Please enter Preferred date in this pattern yyyy-MM-dd HH:mm");
                                String date=myObj.nextLine();
                                done=((Customer)u).makeInstOrder(p, model, date);
-                               EmailSender.sendEmail(u.Email,"Car Accessouries:Update","Your Order status[Pending]\n we are waiting for you to bring the car to Our Center");
+                               EmailSender.sendEmail(u.Email,"Car Accessouries: 1st Update","Your Order status[Pending]\n we are waiting for you to bring the car to Our Center");
                                ///1st notification< {order status: pending--->the order is waiting for you to bring the car
                            }
                            else if(answerStringIn.equalsIgnoreCase("n")) {
@@ -551,7 +558,7 @@ public class carAccess {
                         if(done) {
                         System.out.println("***Success***");}
                         else {
-                        	System.out.println("***Failed, Try again***");
+                        	System.out.println(failMsg);
                       }
                         }
                         
@@ -573,7 +580,7 @@ public class carAccess {
                      	myObj.nextLine();
                      	answerIntIn=-1;
                          System.out.println("---Managing My Account---");
-                         System.out.println(" what do you WANT to do?");
+                         System.out.println(msg);
       
                          System.out.println("1. Show MY data");
                          System.out.println("2. Edit MY Password");
@@ -581,7 +588,7 @@ public class carAccess {
                          System.out.println("4. Edit MY Phone");
                          System.out.println("5. Edit MY Address");
                          System.out.println("6. Back");
-                         System.out.println("please Enter the # of the service");
+                         System.out.println(msg2);
                          answerIntIn= myObj.nextInt();  
                          if(answerIntIn==1) {//Show my Data
                             	System.out.println("---Customer"+u.Name+"---");
@@ -605,9 +612,9 @@ public class carAccess {
                                 String newPass=myObj.nextLine();
                                 boolean done=((Customer) u).changeMyPass(oldPass, newPass);
                                 if(done) {
-                                System.out.println("***Successfully Edited***");}
+                                System.out.println(SuccessMsg);}
                                 else {
-                                	System.out.println("***Failed, Try again***");
+                                	System.out.println(failMsg);
                                 }
                                	}
                             else if(answerIntIn==3) {//edit my name
@@ -619,9 +626,9 @@ public class carAccess {
                                String newName=myObj.nextLine();
                                boolean done1=((Customer) u).changeMyData(Email, newName,"","");
                                if(done1) {
-                               System.out.println("***Successfully Edited***");}
+                               System.out.println(SuccessMsg);}
                                else {
-                               	System.out.println("***Failed, Try again***");
+                               	System.out.println(failMsg);
                                
                                 }
                                	}
@@ -634,9 +641,9 @@ public class carAccess {
                                 String newP=myObj.nextLine();
                                 boolean done1=((Customer) u).changeMyData(Email,"",newP,"");
                                 if(done1) {
-                                System.out.println("***Successfully Edited***");}
+                                System.out.println(SuccessMsg);}
                                 else {
-                                	System.out.println("***Failed, Try again***");
+                                	System.out.println(failMsg);
                                 
                                  }
                                	}
@@ -649,9 +656,9 @@ public class carAccess {
                                 String newAdd=myObj.nextLine();
                                 boolean done1=((Customer) u).changeMyData(Email, "","",newAdd);
                                 if(done1) {
-                                System.out.println("***Successfully Edited***");}
+                                System.out.println(SuccessMsg);}
                                 else {
-                                	System.out.println("***Failed, Try again***");
+                                	System.out.println(failMsg);
                                 
                                  }
                                	}
@@ -665,7 +672,7 @@ public class carAccess {
                      	break;
                      }
                      else if(answerInt<1&&answerInt>6) {
-                     System.out.println("wrong #, TRY Again");	
+                     System.out.println(msg5);	
                      continue;	
                      }
                      }
@@ -676,19 +683,19 @@ public class carAccess {
                  String answerStringIn;
                  
                  answerInt=-1;
-                  System.out.println("---Welcome Installer "+u.Name+", what do you WANT to do?---");
+                  System.out.println("---Welcome Installer "+u.Name+msg);
                   System.out.println("1. View installation requests");
                   System.out.println("2. View my Own installation");
                   System.out.println("3. make an appointment");
                   System.out.println("4. Check as Done");
                   System.out.println("5. logOut");
-                  System.out.println("please Enter the # of the service");
+                  System.out.println(msg2);
                    answerInt= myObj.nextInt();
                   if(answerInt==1) {//Viewing all Installation requests
                   	System.out.println("---Viewing all INSTALLATIONs' requests---");
                      ((Installer)u).showAllInstallations();
                      for(Installation i:Initialing.installationRequests) {
-                     EmailSender.sendEmail(i.custEmail,"Car Accessouries:Update","Your Order status[Waiting]\n we are waiting for you to bring the car to Our Center");
+                     EmailSender.sendEmail(i.custEmail,"Car Accessouries: 2nd Update","Your Order status[Waiting]\n we are waiting for you to bring the car to Our Center");
 
                      }
                      //2nd notification {Waiting-----> the installation is waiting an installer to take it
@@ -704,14 +711,14 @@ public class carAccess {
                        ((Installer)u).showAllInstallations();
                      //2nd notification {Waiting-----> the installation is waiting an installer to take it
                        for(Installation i:Initialing.installationRequests) {
-                           EmailSender.sendEmail(i.custEmail,"Car Accessouries:Update","Your Order status[Waiting]\n we are waiting for you to bring the car to Our Center");
+                           EmailSender.sendEmail(i.custEmail,"Car Accessouries:2nd Update","Your Order status[Waiting]\n we are waiting for you to bring the car to Our Center");
 
                            }
                      System.out.println("This is all INSTALLATIONs available to take\n Please enter the # of the INSTALLATION you want to START work with");
                      answerIntIn=myObj.nextInt();
                      ((Installer)u).AddInstallationToWork(answerIntIn);
                      //3rd notification {In Process-----> the installation is In process
-                     EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries:Update","Your Order status[In Process]\n Installer is WORKING on it");
+                     EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries: 3rd Update","Your Order status[In Process]\n Installer is WORKING on it");
                   }
                   else if(answerInt==4) {//check as done 
                 		System.out.println("---Let's schedual an appointment---");
@@ -719,7 +726,7 @@ public class carAccess {
                       System.out.println("This is all your INSTALLATIONs \n Please enter the # of the INSTALLATION you finished working with");
                       answerIntIn=myObj.nextInt();
                       ((Installer)u).changeStatustoDone(answerIntIn);
-                      EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries:Update","Your Order status [Done]\n Your car is done\nYou can come to take it");
+                      EmailSender.sendEmail(((Installer)u).myInstWork.get(answerIntIn).custEmail,"Car Accessouries: 4th Update","Your Order status [Done]\n Your car is done\nYou can come to take it");
 
                    }
                   
@@ -728,7 +735,7 @@ public class carAccess {
                   	break;
                   }
                   else if(answerInt<1&&answerInt>5) {
-                  System.out.println("wrong #, TRY Again");	
+                  System.out.println(msg5);	
                   continue;	
                   }
             	
@@ -777,7 +784,7 @@ public class carAccess {
                      System.out.println("NOW,Please log In");
                  }
                      else {
-                     	System.out.println("***Failed, Try again***");
+                     	System.out.println(failMsg);
                      }}
                  if(answerIntIn==2) {
                 	 break;

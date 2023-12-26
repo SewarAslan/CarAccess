@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Customer extends User {
 	public  LinkedList<Installation> myInst= new LinkedList<Installation>();
 	public  LinkedList<Product> myOrdersLL= new LinkedList<Product>();
-
+String lline="\n--------------------------------\n";
 	public Customer(String Email, String Password) {
 		super(Email, Password);
 		Type=3;
@@ -25,7 +25,8 @@ public class Customer extends User {
 		// TODO Auto-generated constructor stub
 	}
 	public boolean changeMyData(String email,String name,String phone,String address) {
-		email=this.Email;
+		String em=email;
+		em=this.Email;
 		
 				if(name.isBlank()&&phone.isBlank()&&!address.isBlank()) {
 					this.Address=address;
@@ -60,7 +61,8 @@ public  boolean Searchproduct(String deSearch) {
   		  flag= true;
         }}}
 	for(Product p:Initialing.SimilarproductsLL) {
-		System.out.println(p+"\n--------------------------------\n");
+		System.out.println(p);
+		System.out.println(lline);
 		}
 	return flag;
 	
@@ -69,7 +71,7 @@ public void showAllproducts() {
 	
 	for (int i = 0; i < Initialing.productsLL.size(); i++) {
 	    System.out.println(i + ": " + Initialing.productsLL.get(i));
-		System.out.println("\n--------------------------------\n");
+		System.out.println(lline);
 	}
 }
 private static final String EXPECTED_DATE_PATTERN = "yyyy-MM-dd HH:mm";
@@ -112,7 +114,7 @@ public boolean makeSimpleOrder(Product p) {
 		System.out.println("wrong date,Try again Later");
 		}
 	}
-	if(paymentSuccessful=false)  System.out.println("Error: Payment failed. Purchase not completed.");
+	if(paymentSuccessful==false)  System.out.println("Error: Payment failed. Purchase not completed.");
 return paymentSuccessful;
 }
 public void viewOrders() {
@@ -120,7 +122,7 @@ public void viewOrders() {
 		System.out.println(p);
 		
 	}
-	System.out.println("\n--------------------------------\n");
+	System.out.println(lline);
 }
 
 

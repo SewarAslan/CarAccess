@@ -76,10 +76,12 @@ public class EmailSender {
             // Send message
             Transport.send(message);
             System.out.println("Sent message successfully....");
+           
         } catch (MessagingException mex) {
-            mex.printStackTrace();
+            System.out.println("Problem while sending email");
         }
 
     }
 
 }
+            

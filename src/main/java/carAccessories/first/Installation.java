@@ -10,9 +10,9 @@ import io.cucumber.cienvironment.internal.com.eclipsesource.json.ParseException;
 
 public class Installation {
 
-	String car_model;
-	String prefered_date_time;
-	String protname;
+	public String car_model;
+	public String prefered_date_time;
+	public String protname;
 	public String custEmail;
 	public Installation(String car_model,String date,String name,String custEmail) {
 		
